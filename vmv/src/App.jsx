@@ -50,6 +50,7 @@ import Navbar from './Components/Navbar/Navbar';
 import MainPage from './Components/MainPage/MainPage';
 import Dashboard from './Components/Dashboard/Dashboard';
 import SignupForm from './Components/Account/SignupForm';
+import MultiStepForm from './Pages/MultiStepForm/MultiStepForm';
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -71,6 +72,7 @@ const App = () => {
               <Route path="/" element={<MainPage />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/signup" element={<SignupForm />} />
+              <Route path="/form" element={<MultiStepForm />} />
             </Routes>
           </>
         )}

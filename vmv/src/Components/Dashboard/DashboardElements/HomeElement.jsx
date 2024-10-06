@@ -5,7 +5,7 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 const CardComponent = () => {
   return (
     <a
-      href="#"
+      href="/form"
       className="flex flex-col items-center bg-black border border-gray-200 rounded-lg shadow dark:border-gray-700 max-w-sm"
     >
       <div className="flex flex-col justify-between p-4 leading-normal">
