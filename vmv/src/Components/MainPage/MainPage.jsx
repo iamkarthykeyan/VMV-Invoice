@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 
 const slides = [
   {
@@ -29,7 +30,7 @@ function Hero() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
-    }, 5000); 
+    }, 5000);
     return () => clearInterval(interval);
   }, []);
 
@@ -59,10 +60,12 @@ function Hero() {
             <p className="text-base lg:text-lg text-gray-300">
               {slide.description}
             </p>
-            <button className="mt-8 bg-white text-black py-3 px-6 rounded-full text-sm md:text-base lg:text-lg font-semibold flex items-center">
-            Begin Your Today's Invoice Journey
-            <p className="ml-2 text-2xl">→</p>
-            </button>
+            <Link to="/dashboard"> {/* Link to the dashboard */}
+              <button className="mt-8 bg-white text-black py-3 px-6 rounded-full text-sm md:text-base lg:text-lg font-semibold flex items-center">
+                Begin Your Today's Invoice Journey
+                <p className="ml-2 text-2xl">→</p>
+              </button>
+            </Link>
           </div>
         </div>
       ))}

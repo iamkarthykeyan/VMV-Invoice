@@ -1,93 +1,46 @@
-import React, { useEffect } from 'react';
-import gsap from 'gsap';
-import './PreLoader.css';
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
 
-const PreLoader = ({ onFinish }) => {
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            gsap.to(".pre-loader-left, .pre-loader-right", { 
-                x: (i) => (i === 0 ? '-100%' : '100%'), 
-                opacity: 0, 
-                duration: 0.8, 
-                ease: 'power4.inOut', 
-                onComplete: () => {
-                    onFinish();
-                } 
-            });
-        }, 2650); 
+const PreLoader = ({ onComplete }) => {
+  const circleRef = useRef(null);
+  const textRef = useRef(null);
 
-        return () => clearTimeout(timer);
-    }, [onFinish]);
+  useEffect(() => {
+    // Spin the circle for 2 seconds
+    gsap.to(circleRef.current, {
+      rotation: 360,
+      duration: 2,
+      ease: "power1.inOut",
+    });
 
-    return (
-        <div className="pre-loader h-screen flex">
-            {/* Left Side */}
-            <div className="pre-loader-left w-1/2">
-                {/* Row 1: Black background, white text */}
-                <div className="row-1 bg-black text-white h-1/3 flex items-center overflow-hidden">
-                    <div className="marquee-left flex">
-                        <span className="text-9xl mx-8">VMV</span>
-                        <span className="text-9xl mx-8">VMV</span>
-                        <span className="text-9xl mx-8">VMV</span>
-                        <span className="text-9xl mx-8">VMV</span>
-                    </div>
-                </div>
-
-                {/* Row 2: White background, black text */}
-                <div className="row-2 bg-white text-black h-1/3 flex items-center overflow-hidden">
-                    <div className="marquee-center-left flex">
-                        <span className="text-9xl mx-8">VMV</span>
-                        <span className="text-9xl mx-8">VMV</span>
-                        <span className="text-9xl mx-8">VMV</span>
-                        <span className="text-9xl mx-8">VMV</span>
-                    </div>
-                </div>
-
-                {/* Row 3: Black background, white text */}
-                <div className="row-3 bg-black text-white h-1/3 flex items-center overflow-hidden">
-                    <div className="marquee-right flex">
-                        <span className="text-9xl mx-8">VMV</span>
-                        <span className="text-9xl mx-8">VMV</span>
-                        <span className="text-9xl mx-8">VMV</span>
-                        <span className="text-9xl mx-8">VMV</span>
-                    </div>
-                </div>
-            </div>
-
-            {/* Right Side */}
-            <div className="pre-loader-right w-1/2">
-                {/* Row 1: Mirrored content */}
-                <div className="row-1 bg-black text-white h-1/3 flex items-center overflow-hidden">
-                    <div className="marquee-left flex">
-                        <span className="text-9xl mx-8">VMV</span>
-                        <span className="text-9xl mx-8">VMV</span>
-                        <span className="text-9xl mx-8">VMV</span>
-                        <span className="text-9xl mx-8">VMV</span>
-                    </div>
-                </div>
-
-                {/* Row 2: Mirrored content */}
-                <div className="row-2 bg-white text-black h-1/3 flex items-center overflow-hidden">
-                    <div className="marquee-center-right flex">
-                        <span className="text-9xl mx-8">VMV</span>
-                        <span className="text-9xl mx-8">VMV</span>
-                        <span className="text-9xl mx-8">VMV</span>
-                        <span className="text-9xl mx-8">VMV</span>
-                    </div>
-                </div>
-
-                {/* Row 3: Mirrored content */}
-                <div className="row-3 bg-black text-white h-1/3 flex items-center overflow-hidden">
-                    <div className="marquee-right flex">
-                        <span className="text-9xl mx-8">VMV</span>
-                        <span className="text-9xl mx-8">VMV</span>
-                        <span className="text-9xl mx-8">VMV</span>
-                        <span className="text-9xl mx-8">VMV</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+    // Fade-in the text
+    gsap.fromTo(
+      textRef.current,
+      { opacity: 0 },
+      { opacity: 1, duration: 1.5, ease: "power2.out", delay: 0.5 }
     );
+
+    // Fade out the preloader after 2 seconds
+    const timeout = setTimeout(() => {
+      gsap.to(circleRef.current, { opacity: 0, duration: 0.5 });
+      gsap.to(textRef.current, { opacity: 0, duration: 0.5, onComplete });
+    }, 1000); // 2 seconds
+
+    // Cleanup timeout on component unmount
+    return () => clearTimeout(timeout);
+  }, [onComplete]);
+
+  return (
+    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+      <div className="relative flex flex-col items-center">
+        {/* Spinning Circle */}
+        <div
+          ref={circleRef}
+          className="w-16 h-16 sm:w-24 sm:h-24 md:w-32 md:h-32 border-t-4 border-gray-800 rounded-full transition-all"
+        ></div>
+      </div>
+    </div>
+  );
 };
 
 export default PreLoader;
