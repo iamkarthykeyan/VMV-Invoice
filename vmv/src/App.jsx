@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import PreLoader from './Pages/PreLoader';
-import MainPage from './Pages/MainPage';
 import Navbar from './Components/Navbar/Navbar';
+import PreLoader from './Components/PreLoader/PreLoader';
+import MainPage from './Components/MainPage/MainPage';
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
