@@ -2,22 +2,22 @@ import { useState, useEffect } from "react";
 
 const slides = [
   {
-    videoSrc: "https://cdn.prod.website-files.com/66917f970aa31c65959816ce%2F6691813bb8a59b7a8a0f1b53_Neon-Glow-Abstract-Geometric-Design-2024-02-20-16-41-14-Utc-transcode.mp4",
+    videoSrc: "https://ik.imagekit.io/rxdxtxpigt/React-Invoice/15157535-uhd_3840_2160_25fps.mp4?updatedAt=1728206235453",
     title: "Internal Invoicing Platform for VMV International",
     description: "Our internal invoicing system is built to streamline the company’s billing process. This tool enables the finance team to manage invoices, payments, and tax reports efficiently within the organization.",
   },
   {
-    videoSrc: "https://cdn.prod.website-files.com/66917f970aa31c65959816ce%2F6691813bb8a59b7a8a0f1b53_Neon-Glow-Abstract-Geometric-Design-2024-02-20-16-41-14-Utc-transcode.mp4",
+    videoSrc: "https://ik.imagekit.io/rxdxtxpigt/React-Invoice/15157535-uhd_3840_2160_25fps.mp4?updatedAt=1728206235453",
     title: "Automate Company Invoices and Payments",
     description: "This system is exclusively for internal use, automating invoicing and payment tracking. Finance personnel can use it to handle company transactions, ensuring efficiency and compliance within the company’s financial operations.",
   },
   {
-    videoSrc: "https://cdn.prod.website-files.com/66917f970aa31c65959816ce%2F6691813bb8a59b7a8a0f1b53_Neon-Glow-Abstract-Geometric-Design-2024-02-20-16-41-14-Utc-transcode.mp4",
+    videoSrc: "https://ik.imagekit.io/rxdxtxpigt/React-Invoice/15157535-uhd_3840_2160_25fps.mp4?updatedAt=1728206235453",
     title: "Efficient Financial Tracking for Internal Teams",
     description: "Designed for VMV International's internal finance team, this tool simplifies payment collection, internal client management, and maintains clear, detailed financial records across departments.",
   },
   {
-    videoSrc: "https://cdn.prod.website-files.com/66917f970aa31c65959816ce%2F6691813bb8a59b7a8a0f1b53_Neon-Glow-Abstract-Geometric-Design-2024-02-20-16-41-14-Utc-transcode.mp4",
+    videoSrc: "https://ik.imagekit.io/rxdxtxpigt/React-Invoice/15157535-uhd_3840_2160_25fps.mp4?updatedAt=1728206235453",
     title: "Professional Invoice Designs for Internal Use",
     description: "Create professional, standardized invoices for internal transactions. This tool is tailored for company use, providing a unified, polished invoice format for all internal billing needs.",
   },

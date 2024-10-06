@@ -39,8 +39,8 @@ const Navbar = () => {
   className={`md:flex items-center gap-6 mt-4 ${menuOpen ? 'flex flex-col items-center' : 'hidden'} md:justify-center bg-white md:bg-transparent`}
 >
   <a href="#" className="text-gray-600 hover:text-black py-2 transition duration-300 mt-2">HOME</a>
-  <a href="#" className="text-gray-600 hover:text-black py-2 transition duration-300 mt-2">LOGIN</a>
-  <a href="#" className="text-gray-600 hover:text-black py-2 transition duration-300 mt-2">LOGOUT</a>
+  <a href="#" className="text-gray-600 hover:text-black py-2 transition duration-300 mt-2">DASHBOARD</a>
+  <a href="#" className="text-gray-600 hover:text-black py-2 transition duration-300 mt-2">ACCOUNT</a>
   <a href="#" className="text-gray-600 hover:text-black py-2 transition duration-300 mt-2">HISTORY</a>
 </nav>
 
