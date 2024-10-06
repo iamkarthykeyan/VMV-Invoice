@@ -79,32 +79,31 @@ const MultiStepForm = () => {
                 return (
                     <div>
                         <h3 className="text-xl font-semibold mb-6 text-gray-800">Our Address</h3>
-
+                        <label htmlFor="your-address" className="block text-gray-700 mb-1">Your Address</label>
                         <input
                             type="text"
                             placeholder="Your Address"
-                            defaultValue="PLOT NO: 115 LAKSHMI NAGAR KOLADI THIRUVERKADU CHENNAI : 600077"
+                            defaultValue="PLOT NO: 115, LAKSHMI NAGAR KOLADI, THIRUVERKADU, CHENNAI: 600077"
                             className="w-full p-3 border-2 border-gray-300 rounded-lg mb-4 focus:ring-2 focus:ring-gray-500 focus:outline-none"
                         />
-
+                        <label htmlFor="your-email" className="block text-gray-700 mb-1">Your Email</label>
                         <input
                             type="email"
                             placeholder="Your Email"
                             className="w-full p-3 border-2 border-gray-300 rounded-lg mb-4 focus:ring-2 focus:ring-gray-500 focus:outline-none"
                         />
-
+                        <label htmlFor="your-number" className="block text-gray-700 mb-1">Your Number</label>
                         <input
                             type="tel"
                             placeholder="Your Number"
                             className="w-full p-3 border-2 border-gray-300 rounded-lg mb-4 focus:ring-2 focus:ring-gray-500 focus:outline-none"
                         />
                     </div>
-
                 );
             case 3:
                 return (
                     <div>
-                        <PriceAndProducts/>
+                        <PriceAndProducts />
                     </div>
                 );
             case 4:
@@ -136,8 +135,8 @@ const MultiStepForm = () => {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-100 p-6">
-            <div className="w-full max-w-2xl bg-white shadow-lg rounded-lg p-8">
+        <div className="min-h-screen flex items-start justify-center bg-white p-6">
+            <div className="w-full max-w-4xl p-6">
                 {/* Progress Stepper */}
                 <div className="flex flex-col md:flex-row justify-between items-center mb-8">
                     {steps.map((stepItem, index) => (
