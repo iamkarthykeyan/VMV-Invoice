@@ -14,7 +14,7 @@ const Navbar = () => {
 
         <div className="text-2xl font-semibold md:order-none order-1 md:mb-0 mb-4 text-center">
           <a href="#" className="flex items-center gap-2 justify-center">
-          <i class="fa-solid fa-gear"></i> VMV International
+          <i className="fa-solid fa-gear"></i> VMV International
           </a>
         </div>
 
@@ -36,25 +36,12 @@ const Navbar = () => {
       </div>
 
       <nav
-  className={`md:flex items-center gap-8 mt-4 ${menuOpen ? 'flex flex-col items-center' : 'hidden'} md:justify-center bg-white md:bg-transparent`}
+  className={`md:flex items-center gap-6 mt-4 ${menuOpen ? 'flex flex-col items-center' : 'hidden'} md:justify-center bg-white md:bg-transparent`}
 >
   <a href="#" className="text-gray-600 hover:text-black py-2 transition duration-300 mt-2">HOME</a>
-  <div className="group relative">
-    <button className="text-gray-600 hover:text-black py-2 transition duration-300 mt-2">PAGES <i className="fas fa-chevron-down text-sm"></i></button>
-    <div className="absolute left-0 mt-2 w-32 hidden group-hover:block bg-white border rounded shadow-lg">
-      <a href="#" className="block px-4 py-2 text-gray-600 hover:bg-gray-100">Category 1</a>
-      <a href="#" className="block px-4 py-2 text-gray-600 hover:bg-gray-100">Category 2</a>
-    </div>
-  </div>
-  <div className="group relative">
-    <button className="text-gray-600 hover:text-black py-2 transition duration-300 mt-2">CATEGORIES <i className="fas fa-chevron-down text-sm"></i></button>
-    <div className="absolute left-0 mt-2 w-32 hidden group-hover:block bg-white border rounded shadow-lg">
-      <a href="#" className="block px-4 py-2 text-gray-600 hover:bg-gray-100">Category 1</a>
-      <a href="#" className="block px-4 py-2 text-gray-600 hover:bg-gray-100">Category 2</a>
-    </div>
-  </div>
-  <a href="#" className="text-gray-600 hover:text-black py-2 transition duration-300 mt-2">CONTACT</a>
-  <a href="#" className="text-gray-600 hover:text-black py-2 transition duration-300 mt-2">SUBSCRIBE</a>
+  <a href="#" className="text-gray-600 hover:text-black py-2 transition duration-300 mt-2">LOGIN</a>
+  <a href="#" className="text-gray-600 hover:text-black py-2 transition duration-300 mt-2">LOGOUT</a>
+  <a href="#" className="text-gray-600 hover:text-black py-2 transition duration-300 mt-2">HISTORY</a>
 </nav>
 
     </header>

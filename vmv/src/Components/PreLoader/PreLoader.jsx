@@ -5,9 +5,16 @@ import './PreLoader.css';
 const PreLoader = ({ onFinish }) => {
     useEffect(() => {
         const timer = setTimeout(() => {
-            gsap.to(".pre-loader-left", { x: '-100%', duration: 1, ease: 'power4.inOut' });
-            gsap.to(".pre-loader-right", { x: '100%', duration: 1, ease: 'power4.inOut', onComplete: onFinish });
-        }, 4000);
+            gsap.to(".pre-loader-left, .pre-loader-right", { 
+                x: (i) => (i === 0 ? '-100%' : '100%'), 
+                opacity: 0, 
+                duration: 0.8, 
+                ease: 'power4.inOut', 
+                onComplete: () => {
+                    onFinish();
+                } 
+            });
+        }, 2650); 
 
         return () => clearTimeout(timer);
     }, [onFinish]);

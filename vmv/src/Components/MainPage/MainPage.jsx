@@ -1,24 +1,73 @@
-// MainPage.js
-import React from 'react';
+import { useState, useEffect } from "react";
 
-const MainPage = () => {
+const slides = [
+  {
+    videoSrc: "https://cdn.prod.website-files.com/66917f970aa31c65959816ce%2F6691813bb8a59b7a8a0f1b53_Neon-Glow-Abstract-Geometric-Design-2024-02-20-16-41-14-Utc-transcode.mp4",
+    title: "Internal Invoicing Platform for VMV International",
+    description: "Our internal invoicing system is built to streamline the company’s billing process. This tool enables the finance team to manage invoices, payments, and tax reports efficiently within the organization.",
+  },
+  {
+    videoSrc: "https://cdn.prod.website-files.com/66917f970aa31c65959816ce%2F6691813bb8a59b7a8a0f1b53_Neon-Glow-Abstract-Geometric-Design-2024-02-20-16-41-14-Utc-transcode.mp4",
+    title: "Automate Company Invoices and Payments",
+    description: "This system is exclusively for internal use, automating invoicing and payment tracking. Finance personnel can use it to handle company transactions, ensuring efficiency and compliance within the company’s financial operations.",
+  },
+  {
+    videoSrc: "https://cdn.prod.website-files.com/66917f970aa31c65959816ce%2F6691813bb8a59b7a8a0f1b53_Neon-Glow-Abstract-Geometric-Design-2024-02-20-16-41-14-Utc-transcode.mp4",
+    title: "Efficient Financial Tracking for Internal Teams",
+    description: "Designed for VMV International's internal finance team, this tool simplifies payment collection, internal client management, and maintains clear, detailed financial records across departments.",
+  },
+  {
+    videoSrc: "https://cdn.prod.website-files.com/66917f970aa31c65959816ce%2F6691813bb8a59b7a8a0f1b53_Neon-Glow-Abstract-Geometric-Design-2024-02-20-16-41-14-Utc-transcode.mp4",
+    title: "Professional Invoice Designs for Internal Use",
+    description: "Create professional, standardized invoices for internal transactions. This tool is tailored for company use, providing a unified, polished invoice format for all internal billing needs.",
+  },
+];
+
+function Hero() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
+    }, 5000); 
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className="main-page h-screen bg-gray-100 flex flex-col items-center justify-center">
-      {/* Minimal Navbar */}
-      <nav className="w-full p-4 bg-gray-800 text-white flex justify-between">
-        <div>Logo</div>
-        <div>Menu</div>
-      </nav>
-
-      {/* Centered Content */}
-      <div className="text-center mt-20">
-        <h1 className="text-6xl mb-8">VMV International</h1>
-        <button className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
-          Get Started
-        </button>
-      </div>
+    <div className="relative h-[560px] flex flex-col justify-center items-start rounded-[20px] m-3 overflow-hidden">
+      {slides.map((slide, index) => (
+        <div
+          key={index}
+          className={`absolute top-0 left-0 w-full h-full transition-opacity duration-1000 ${currentSlide === index ? 'opacity-100' : 'opacity-0'}`}
+        >
+          <video
+            className="absolute top-0 left-0 w-full h-full object-cover"
+            autoPlay
+            loop
+            muted
+            playsInline
+          >
+            <source src={slide.videoSrc} type="video/mp4" />
+          </video>
+          <div className="absolute top-0 left-0 w-full h-full bg-black opacity-60"></div>
+          <div className="relative z-10 max-w-4xl p-4 lg:p-12 text-white mb-96">
+            <h1 className="text-3xl md:text-5xl lg:text-7xl leading-tight font-poppins">
+              {slide.title}
+            </h1>
+          </div>
+          <div className="absolute right-0 bottom-0 max-w-3xl p-4 lg:p-12 text-white mb-16">
+            <p className="text-base lg:text-lg text-gray-300">
+              {slide.description}
+            </p>
+            <button className="mt-8 bg-white text-black py-3 px-6 rounded-full text-sm md:text-base lg:text-lg font-semibold flex items-center">
+            Begin Your Today's Invoice Journey
+            <p className="ml-2 text-2xl">→</p>
+            </button>
+          </div>
+        </div>
+      ))}
     </div>
   );
-};
+}
 
-export default MainPage;
+export default Hero;
