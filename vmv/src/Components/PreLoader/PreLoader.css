@@ -1,0 +1,44 @@
+.marquee-left {
+    animation: marquee-left 3s linear infinite;
+}
+
+.marquee-right {
+    animation: marquee-right 3s linear infinite;
+}
+
+.marquee-center-left {
+    animation: marquee-left 3s linear infinite;
+}
+
+.marquee-center-right {
+    animation: marquee-right 3s linear infinite;
+}
+
+@keyframes marquee-left {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes marquee-right {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+span {
+    white-space: nowrap;
+    padding-left: 50px;
+}
+.pre-loader{
+    font-family: "Playwrite DK Uloopet", cursive;
+    font-weight: 500;
+}

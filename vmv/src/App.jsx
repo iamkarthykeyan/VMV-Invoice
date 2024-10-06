@@ -1,10 +1,27 @@
-import './App.css'
+import React, { useState } from 'react';
+import PreLoader from './Pages/PreLoader';
+import MainPage from './Pages/MainPage';
+import Navbar from './Components/Navbar/Navbar';
 
-function App() {
+const App = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  const handlePreLoaderFinish = () => {
+    setIsLoading(false);
+  };
 
   return (
-   <></>
-  )
-}
+    <div>
+      {isLoading ? (
+        <PreLoader onFinish={handlePreLoaderFinish} />
+      ) : (
+        <>
+        <Navbar/>
+        <MainPage />
+        </>
+      )}
+    </div>
+  );
+};
 
-export default App
+export default App;

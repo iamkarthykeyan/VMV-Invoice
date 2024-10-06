@@ -1,0 +1,64 @@
+import React, { useState } from 'react';
+
+const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  return (
+    <header className="py-6 px-8 border-b border-gray-200">
+      <div className="flex justify-between items-center w-full md:flex-row flex-col md:space-y-0 space-y-4">
+        
+        <div className="hidden md:flex items-center gap-4 md:order-none order-2">
+          <a href="#" className="text-gray-600 hover:text-black transition duration-300"><i className="fab fa-instagram"></i></a>
+          <a href="#" className="text-gray-600 hover:text-black transition duration-300"><i className="fab fa-linkedin-in"></i></a>
+        </div>
+
+        <div className="text-2xl font-semibold md:order-none order-1 md:mb-0 mb-4 text-center">
+          <a href="#" className="flex items-center gap-2 justify-center">
+            <i className="fas fa-pen-nib"></i> Invoicely
+          </a>
+        </div>
+
+        <div className="hidden md:flex items-center gap-5 md:order-none order-3">
+          <a href="#" className="text-gray-600 hover:text-black"><i className="fas fa-user"></i></a>
+          <a href="#" className="text-gray-600 hover:text-black"><i className="fas fa-search"></i></a>
+        </div>
+      </div>
+
+      <div className="md:hidden flex justify-between items-center mt-4">
+        <span className="text-gray-600 text-lg">Menu</span>
+        <button onClick={() => setMenuOpen(!menuOpen)} className="text-gray-600 hover:text-black">
+          {menuOpen ? (
+            <i className="fas fa-times text-2xl"></i> // Close Icon
+          ) : (
+            <i className="fas fa-bars text-2xl"></i> // Menu Icon
+          )}
+        </button>
+      </div>
+
+      <nav
+  className={`md:flex items-center gap-8 mt-4 ${menuOpen ? 'flex flex-col items-center' : 'hidden'} md:justify-center bg-white md:bg-transparent`}
+>
+  <a href="#" className="text-gray-600 hover:text-black py-2 transition duration-300 mt-2">HOME</a>
+  <div className="group relative">
+    <button className="text-gray-600 hover:text-black py-2 transition duration-300 mt-2">PAGES <i className="fas fa-chevron-down text-sm"></i></button>
+    <div className="absolute left-0 mt-2 w-32 hidden group-hover:block bg-white border rounded shadow-lg">
+      <a href="#" className="block px-4 py-2 text-gray-600 hover:bg-gray-100">Category 1</a>
+      <a href="#" className="block px-4 py-2 text-gray-600 hover:bg-gray-100">Category 2</a>
+    </div>
+  </div>
+  <div className="group relative">
+    <button className="text-gray-600 hover:text-black py-2 transition duration-300 mt-2">CATEGORIES <i className="fas fa-chevron-down text-sm"></i></button>
+    <div className="absolute left-0 mt-2 w-32 hidden group-hover:block bg-white border rounded shadow-lg">
+      <a href="#" className="block px-4 py-2 text-gray-600 hover:bg-gray-100">Category 1</a>
+      <a href="#" className="block px-4 py-2 text-gray-600 hover:bg-gray-100">Category 2</a>
+    </div>
+  </div>
+  <a href="#" className="text-gray-600 hover:text-black py-2 transition duration-300 mt-2">CONTACT</a>
+  <a href="#" className="text-gray-600 hover:text-black py-2 transition duration-300 mt-2">SUBSCRIBE</a>
+</nav>
+
+    </header>
+  );
+}
+
+export default Navbar;  
