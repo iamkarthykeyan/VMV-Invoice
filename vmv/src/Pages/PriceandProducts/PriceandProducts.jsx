@@ -6,24 +6,56 @@ const PriceAndProducts = () => {
     const [quantity, setQuantity] = useState('');
     const [nosRate, setNosRate] = useState('');
     const [rows, setRows] = useState([]);
+    const [editIndex, setEditIndex] = useState(null); // New state for editing
 
     const handleAddRow = () => {
         if (description && hsnNo && quantity && nosRate) {
             const newRow = {
-                sno: rows.length + 1,
+                sno: editIndex !== null ? rows[editIndex].sno : rows.length + 1, // Preserve Sno on edit
                 description,
                 hsnNo,
                 quantity: parseInt(quantity, 10),
                 nosRate: parseFloat(nosRate),
                 value: parseInt(quantity, 10) * parseFloat(nosRate),
             };
-            setRows([...rows, newRow]);
-            // Clear inputs after adding the row
+            if (editIndex !== null) {
+                // Update the existing row
+                const updatedRows = [...rows];
+                updatedRows[editIndex] = newRow;
+                setRows(updatedRows);
+                setEditIndex(null); // Reset after updating
+            } else {
+                // Add new row
+                setRows([...rows, newRow]);
+            }
+
+            // Clear inputs after adding/updating the row
             setDescription('');
             setHsnNo('');
             setQuantity('');
             setNosRate('');
         }
+    };
+
+    const handleEdit = (index) => {
+        // Populate input fields with row data for editing
+        const rowToEdit = rows[index];
+        setDescription(rowToEdit.description);
+        setHsnNo(rowToEdit.hsnNo);
+        setQuantity(rowToEdit.quantity.toString());
+        setNosRate(rowToEdit.nosRate.toString());
+        setEditIndex(index); // Set the edit index
+    };
+
+    const handleDelete = (index) => {
+        // Remove row from the list
+        const updatedRows = rows.filter((_, i) => i !== index);
+        // Renumber the Sno dynamically based on the new array position
+        const renumberedRows = updatedRows.map((row, i) => ({
+            ...row,
+            sno: i + 1 // Renumber Sno starting from 1
+        }));
+        setRows(renumberedRows);
     };
 
     return (
@@ -71,9 +103,9 @@ const PriceAndProducts = () => {
             </div>
             <button
                 onClick={handleAddRow}
-                className="bg-lime-600 text-white py-2 px-4 rounded-lg hover:bg-lime-700 transition duration-200 focus:outline-none font-semibold w-full flex items-center justify-center"
+                className="bg-gradient-to-r from-green-500 to-lime-600 text-white py-2 px-4 rounded-lg hover:from-green-600 hover:to-lime-700 transition-all duration-300 focus:outline-none font-semibold w-full flex items-center justify-center transform"
             >
-                Add Product to the Table <p className="ml-2 text-2xl">→</p>
+                {editIndex !== null ? 'Update Product' : 'Add Product to the Table'} <p className="ml-2 text-2xl">→</p>
             </button>
 
             {/* Table to display added rows */}
@@ -87,6 +119,7 @@ const PriceAndProducts = () => {
                             <th className="p-3 font-semibold text-center">Qty</th>
                             <th className="p-3 font-semibold text-center">No's Rate</th>
                             <th className="p-3 font-semibold text-center">Value</th>
+                            <th className="p-3 font-semibold text-center">Actions</th> {/* Added for edit and delete */}
                         </tr>
                     </thead>
                     <tbody>
@@ -98,6 +131,22 @@ const PriceAndProducts = () => {
                                 <td className="border p-3 text-black text-center">{row.quantity}</td>
                                 <td className="border p-3 text-black text-center">{row.nosRate}</td>
                                 <td className="border p-3 text-black text-center">{row.value}</td>
+                                <td className="border p-3 text-black text-center">
+                                    <button
+                                        onClick={() => handleEdit(index)}
+                                        className="text-black py-2 px-4 rounded-full"
+                                    >
+                                        <i className="fas fa-pencil-alt text-xl"></i> {/* Font Awesome Pencil Icon */}
+                                    </button>
+
+                                    <button
+                                        onClick={() => handleDelete(index)}
+                                        className="text-red-600 py-2 px-4 rounded-full"
+                                    >
+                                        <i className="fas fa-trash text-xl"></i> {/* Font Awesome Trash Icon */}
+                                    </button>
+
+                                </td>
                             </tr>
                         ))}
                     </tbody>
