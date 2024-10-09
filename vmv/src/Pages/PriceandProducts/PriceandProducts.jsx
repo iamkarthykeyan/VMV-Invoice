@@ -170,7 +170,7 @@ const PriceAndProducts = () => {
             {/* Clear Data Button */}
             <button
                 onClick={handleClearData}
-                className="mt-4 bg-gradient-to-r from-red-500 to-red-600 text-white py-2 px-4 rounded-lg hover:from-red-700 hover:to-red-900 transition-all duration-300 focus:outline-none font-semibold w-full flex items-center justify-center"
+                className="mt-4 bg-gradient-to-r from-red-500 to-red-600 text-white py-2 px-4 rounded-lg hover:from-red-600 hover:to-red-700 transition-all duration-300 focus:outline-none font-semibold w-full flex items-center justify-center"
             >
                 Clear All Data <i className="fas fa-trash text-lg ml-3"></i>
             </button>
