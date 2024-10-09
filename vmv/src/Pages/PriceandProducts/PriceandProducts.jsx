@@ -7,6 +7,7 @@ const PriceAndProducts = () => {
     const [nosRate, setNosRate] = useState('');
     const [rows, setRows] = useState([]);
     const [editIndex, setEditIndex] = useState(null); // New state for editing
+    const [showConfirmation, setShowConfirmation] = useState(false); // State for popup confirmation
 
     const handleAddRow = () => {
         if (description && hsnNo && quantity && nosRate) {
@@ -56,6 +57,21 @@ const PriceAndProducts = () => {
             sno: i + 1 // Renumber Sno starting from 1
         }));
         setRows(renumberedRows);
+    };
+
+    const handleClearData = () => {
+        setShowConfirmation(true); // Show confirmation dialog
+    };
+
+    const confirmClearData = () => {
+        // Clear all rows and close the confirmation dialog
+        setRows([]);
+        setShowConfirmation(false);
+    };
+
+    const cancelClearData = () => {
+        // Close the confirmation dialog without clearing data
+        setShowConfirmation(false);
     };
 
     return (
@@ -119,7 +135,7 @@ const PriceAndProducts = () => {
                             <th className="p-3 font-semibold text-center">Qty</th>
                             <th className="p-3 font-semibold text-center">No's Rate</th>
                             <th className="p-3 font-semibold text-center">Value</th>
-                            <th className="p-3 font-semibold text-center">Actions</th> {/* Added for edit and delete */}
+                            <th className="p-3 font-semibold text-center">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -136,22 +152,51 @@ const PriceAndProducts = () => {
                                         onClick={() => handleEdit(index)}
                                         className="text-black py-2 px-4 rounded-full"
                                     >
-                                        <i className="fas fa-pencil-alt text-xl"></i> {/* Font Awesome Pencil Icon */}
+                                        <i className="fas fa-pencil-alt text-xl"></i>
                                     </button>
-
                                     <button
                                         onClick={() => handleDelete(index)}
                                         className="text-red-600 py-2 px-4 rounded-full"
                                     >
-                                        <i className="fas fa-trash text-xl"></i> {/* Font Awesome Trash Icon */}
+                                        <i className="fas fa-trash text-xl"></i>
                                     </button>
-
                                 </td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
             </div>
+
+            {/* Clear Data Button */}
+            <button
+                onClick={handleClearData}
+                className="mt-4 bg-gradient-to-r from-red-500 to-red-600 text-white py-2 px-4 rounded-lg hover:from-red-700 hover:to-red-900 transition-all duration-300 focus:outline-none font-semibold w-full flex items-center justify-center"
+            >
+                Clear All Data <i className="fas fa-trash text-lg ml-3"></i>
+            </button>
+
+            {/* Confirmation Dialog */}
+            {showConfirmation && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                    <div className="bg-white p-6 rounded-md shadow-lg">
+                        <p className="text-lg font-semibold mb-4">Are you sure you want to clear all data?</p>
+                        <div className="flex justify-end">
+                            <button
+                                onClick={confirmClearData}
+                                className="bg-red-600 text-white py-2 px-4 rounded-lg mr-4"
+                            >
+                                Yes
+                            </button>
+                            <button
+                                onClick={cancelClearData}
+                                className="bg-gray-300 text-black py-2 px-4 rounded-lg"
+                            >
+                                No
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

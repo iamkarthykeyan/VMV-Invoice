@@ -50,6 +50,7 @@ const MultiStepForm = () => {
                                 type="text"
                                 id="buyer-company"
                                 placeholder="Enter buyer company name"
+                                onChange={(e) => setFormData({ ...formData, buyerCompany: e.target.value })}
                                 className="w-full p-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:outline-none"
                             />
                         </div>
@@ -60,6 +61,7 @@ const MultiStepForm = () => {
                                 type="text"
                                 id="buyer-address"
                                 placeholder="Enter buyer address"
+                                onChange={(e) => setFormData({ ...formData, buyerAddress: e.target.value })}
                                 className="w-full p-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:outline-none"
                             />
                         </div>
@@ -70,6 +72,7 @@ const MultiStepForm = () => {
                                 type="text"
                                 id="kind-attention"
                                 placeholder="Dear Sir, (Optional message)"
+                                onChange={(e) => setFormData({ ...formData, kindAttention: e.target.value })}
                                 className="w-full p-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:outline-none"
                             />
                         </div>
