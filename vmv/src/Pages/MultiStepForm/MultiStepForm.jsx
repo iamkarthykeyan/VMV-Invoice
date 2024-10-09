@@ -5,8 +5,31 @@ import PriceAndProducts from "../PriceandProducts/PriceandProducts";
 const MultiStepForm = () => {
     const [step, setStep] = useState(1);
 
+    // State to store all form data across steps
+    const [formData, setFormData] = useState({
+        date: "",
+        invoiceNumber: "",
+        buyerCompany: "",
+        buyerAddress: "",
+        kindAttention: "",
+        yourAddress: "PLOT NO: 115, LAKSHMI NAGAR KOLADI, THIRUVERKADU, CHENNAI: 600077",
+        yourEmail: "",
+        yourNumber: "",
+        gstNumber: "",
+        // Add more fields for Price & Products data if needed
+    });
+
     const handleNext = () => setStep(step + 1);
     const handlePrev = () => setStep(step - 1);
+
+    // Handle form field changes and persist data
+    const handleInputChange = (e) => {
+        const { id, value } = e.target;
+        setFormData((prevData) => ({
+            ...prevData,
+            [id]: value,
+        }));
+    };
 
     // Step labels and icons
     const steps = [
@@ -30,45 +53,55 @@ const MultiStepForm = () => {
                             <input
                                 type="date"
                                 id="date"
+                                value={formData.date}
+                                onChange={handleInputChange}
                                 className="w-full p-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:outline-none"
                             />
                         </div>
 
                         <div className="mb-4">
-                            <label htmlFor="invoice-number" className="block text-gray-700 mb-1">Invoice Number</label>
+                            <label htmlFor="invoiceNumber" className="block text-gray-700 mb-1">Invoice Number</label>
                             <input
                                 type="text"
-                                id="invoice-number"
+                                id="invoiceNumber"
+                                value={formData.invoiceNumber}
+                                onChange={handleInputChange}
                                 placeholder="Enter invoice number"
                                 className="w-full p-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:outline-none"
                             />
                         </div>
 
                         <div className="mb-4">
-                            <label htmlFor="buyer-company" className="block text-gray-700 mb-1">Buyer Company Name</label>
+                            <label htmlFor="buyerCompany" className="block text-gray-700 mb-1">Buyer Company Name</label>
                             <input
                                 type="text"
-                                id="buyer-company"
+                                id="buyerCompany"
+                                value={formData.buyerCompany}
+                                onChange={handleInputChange}
                                 placeholder="Enter buyer company name"
                                 className="w-full p-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:outline-none"
                             />
                         </div>
 
                         <div className="mb-4">
-                            <label htmlFor="buyer-address" className="block text-gray-700 mb-1">Buyer Address</label>
+                            <label htmlFor="buyerAddress" className="block text-gray-700 mb-1">Buyer Address</label>
                             <input
                                 type="text"
-                                id="buyer-address"
+                                id="buyerAddress"
+                                value={formData.buyerAddress}
+                                onChange={handleInputChange}
                                 placeholder="Enter buyer address"
                                 className="w-full p-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:outline-none"
                             />
                         </div>
 
                         <div className="mb-4">
-                            <label htmlFor="kind-attention" className="block text-gray-700 mb-1">Kind Attention</label>
+                            <label htmlFor="kindAttention" className="block text-gray-700 mb-1">Kind Attention</label>
                             <input
                                 type="text"
-                                id="kind-attention"
+                                id="kindAttention"
+                                value={formData.kindAttention}
+                                onChange={handleInputChange}
                                 placeholder="Dear Sir, (Optional message)"
                                 className="w-full p-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:outline-none"
                             />
@@ -79,22 +112,30 @@ const MultiStepForm = () => {
                 return (
                     <div>
                         <h3 className="text-xl font-semibold mb-6 text-gray-800">Our Address</h3>
-                        <label htmlFor="your-address" className="block text-gray-700 mb-1">Your Address</label>
+                        <label htmlFor="yourAddress" className="block text-gray-700 mb-1">Your Address</label>
                         <input
                             type="text"
+                            id="yourAddress"
+                            value={formData.yourAddress}
+                            onChange={handleInputChange}
                             placeholder="Your Address"
-                            defaultValue="PLOT NO: 115, LAKSHMI NAGAR KOLADI, THIRUVERKADU, CHENNAI: 600077"
                             className="w-full p-3 border-2 border-gray-300 rounded-lg mb-4 focus:ring-2 focus:ring-gray-500 focus:outline-none"
                         />
-                        <label htmlFor="your-email" className="block text-gray-700 mb-1">Your Email</label>
+                        <label htmlFor="yourEmail" className="block text-gray-700 mb-1">Your Email</label>
                         <input
                             type="email"
+                            id="yourEmail"
+                            value={formData.yourEmail}
+                            onChange={handleInputChange}
                             placeholder="Your Email"
                             className="w-full p-3 border-2 border-gray-300 rounded-lg mb-4 focus:ring-2 focus:ring-gray-500 focus:outline-none"
                         />
-                        <label htmlFor="your-number" className="block text-gray-700 mb-1">Your Number</label>
+                        <label htmlFor="yourNumber" className="block text-gray-700 mb-1">Your Number</label>
                         <input
                             type="tel"
+                            id="yourNumber"
+                            value={formData.yourNumber}
+                            onChange={handleInputChange}
                             placeholder="Your Number"
                             className="w-full p-3 border-2 border-gray-300 rounded-lg mb-4 focus:ring-2 focus:ring-gray-500 focus:outline-none"
                         />
@@ -103,7 +144,7 @@ const MultiStepForm = () => {
             case 3:
                 return (
                     <div>
-                        <PriceAndProducts />
+                        <PriceAndProducts formData={formData} setFormData={setFormData} />
                     </div>
                 );
             case 4:
@@ -112,6 +153,9 @@ const MultiStepForm = () => {
                         <h3 className="text-xl font-semibold mb-6 text-gray-800">GST Information</h3>
                         <input
                             type="text"
+                            id="gstNumber"
+                            value={formData.gstNumber}
+                            onChange={handleInputChange}
                             placeholder="Enter GST number"
                             className="w-full p-3 border-2 border-gray-300 rounded-lg mb-4 focus:ring-2 focus:ring-gray-500 focus:outline-none"
                         />
@@ -128,7 +172,7 @@ const MultiStepForm = () => {
                             Download PDF
                         </button>
                     </div>
-                );
+                )
             default:
                 return null;
         }
@@ -179,14 +223,7 @@ const MultiStepForm = () => {
                         >
                             Next
                         </button>
-                    ) : (
-                        <button
-                            onClick={() => alert("Form Completed")}
-                            className="bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-700 transition-all"
-                        >
-                            Complete
-                        </button>
-                    )}
+                    ) : null}
                 </div>
             </div>
         </div>

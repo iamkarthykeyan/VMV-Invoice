@@ -185,13 +185,13 @@ const PriceAndProducts = () => {
                                 onClick={confirmClearData}
                                 className="bg-red-600 text-white py-2 px-4 rounded-lg mr-4"
                             >
-                                Yes
+                                Confirm!
                             </button>
                             <button
                                 onClick={cancelClearData}
                                 className="bg-gray-300 text-black py-2 px-4 rounded-lg"
                             >
-                                No
+                                Not Sure?
                             </button>
                         </div>
                     </div>
