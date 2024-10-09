@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaCheckCircle, FaCircle } from "react-icons/fa";
+import DownloadPdf from "../Download/DownloadPdf";
 import PriceAndProducts from "../PriceandProducts/PriceandProducts";
 
 const MultiStepForm = () => {
@@ -9,7 +10,6 @@ const MultiStepForm = () => {
     const handleUpdateRows = (newRows) => {
         setRows(newRows);
     };
-
 
     // State to store all form data across steps
     const [formData, setFormData] = useState({
@@ -171,12 +171,7 @@ const MultiStepForm = () => {
                 return (
                     <div>
                         <h3 className="text-xl font-semibold mb-6 text-gray-800">Download as PDF</h3>
-                        <button
-                            className="w-full bg-gray-800 text-white px-4 py-3 rounded-lg hover:bg-gray-700 transition-all"
-                            onClick={() => alert("PDF Downloaded")}
-                        >
-                            Download PDF
-                        </button>
+                        <DownloadPdf rows={rows} formData={formData} /> {/* Pass props to DownloadPdf */}
                     </div>
                 )
             default:

@@ -1,35 +1,46 @@
-import React from 'react';
-import jsPDF from 'jspdf';
-import 'jspdf-autotable';
+import jsPDF from "jspdf";
+import "jspdf-autotable";
+import React from "react";
 
-const DownloadPdf = ({ rows }) => {
-    const generatePdf = () => {
-        const doc = new jsPDF('portrait', 'pt', 'A4');
-        doc.setFontSize(20);
-        doc.text("Invoice Details", 40, 40);
+const DownloadPdf = ({ rows, formData }) => {
+    const generatePDF = () => {
+        const doc = new jsPDF();
 
-        // Create table with rows data
-        const tableData = rows.map(row => [
-            row.sno,
-            row.description,
-            row.hsnNo,
-            row.quantity,
-            row.nosRate,
-            row.value,
-        ]);
+        // Add title
+        doc.text("Invoice", 20, 10);
 
+        // Add formData to PDF
+        doc.text(`Date: ${formData.date}`, 20, 20);
+        doc.text(`Invoice Number: ${formData.invoiceNumber}`, 20, 30);
+        doc.text(`Buyer Company: ${formData.buyerCompany}`, 20, 40);
+        doc.text(`Buyer Address: ${formData.buyerAddress}`, 20, 50);
+        doc.text(`Kind Attention: ${formData.kindAttention}`, 20, 60);
+
+        // Create a table for rows data
         doc.autoTable({
-            head: [['Sno', 'Description', 'HSN No', 'Qty', 'No\'s Rate', 'Value']],
-            body: tableData,
-            startY: 60,
+            startY: 70,
+            head: [['Item', 'Description', 'HSN No','Quantity','Nos Rate','Value']],
+            body: rows.map((row, index) => [
+                index + 1,
+                row.description,
+                row.hsnNo,
+                row.quantity,
+                row.nosRate,
+                row.value,
+            ]),
         });
 
-        // Save the PDF
-        doc.save('invoice.pdf');
+        // Save the generated PDF
+        doc.save("invoice.pdf");
     };
 
     return (
-        <button onClick={generatePdf} className="hidden"></button> // Button hidden since it's handled in PriceAndProducts
+        <button
+            className="w-full bg-gray-800 text-white px-4 py-3 rounded-lg hover:bg-gray-700 transition-all"
+            onClick={generatePDF}
+        >
+            Download PDF
+        </button>
     );
 };
 

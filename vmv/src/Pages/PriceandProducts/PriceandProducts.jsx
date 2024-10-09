@@ -87,7 +87,7 @@ const PriceAndProducts = ({ rows, setRows }) => {
                 />
             </div>
             <div className="mb-4">
-                <label htmlFor="hsn-no" className="block text-gray-700 mb-1">HSN No</label>
+                <label htmlFor="hsnno" className="block text-gray-700 mb-1">HSN No</label>
                 <input
                     type="text"
                     value={hsnNo}
@@ -107,7 +107,7 @@ const PriceAndProducts = ({ rows, setRows }) => {
                 />
             </div>
             <div className="mb-4">
-                <label htmlFor="nos-rate" className="block text-gray-700 mb-1">No's Rate</label>
+                <label htmlFor="nosrate" className="block text-gray-700 mb-1">No's Rate</label>
                 <input
                     type="number"
                     value={nosRate}
