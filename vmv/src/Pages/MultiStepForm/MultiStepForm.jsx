@@ -4,6 +4,12 @@ import PriceAndProducts from "../PriceandProducts/PriceandProducts";
 
 const MultiStepForm = () => {
     const [step, setStep] = useState(1);
+    const [rows, setRows] = useState([]);
+
+    const handleUpdateRows = (newRows) => {
+        setRows(newRows);
+    };
+
 
     // State to store all form data across steps
     const [formData, setFormData] = useState({
@@ -144,7 +150,7 @@ const MultiStepForm = () => {
             case 3:
                 return (
                     <div>
-                        <PriceAndProducts formData={formData} setFormData={setFormData} />
+                        <PriceAndProducts rows={rows} setRows={handleUpdateRows} />
                     </div>
                 );
             case 4:

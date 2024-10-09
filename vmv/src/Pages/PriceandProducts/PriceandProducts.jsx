@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 
-const PriceAndProducts = () => {
+const PriceAndProducts = ({ rows, setRows }) => {
     const [description, setDescription] = useState('');
     const [hsnNo, setHsnNo] = useState('');
     const [quantity, setQuantity] = useState('');
     const [nosRate, setNosRate] = useState('');
-    const [rows, setRows] = useState([]);
     const [editIndex, setEditIndex] = useState(null); // New state for editing
     const [showConfirmation, setShowConfirmation] = useState(false); // State for popup confirmation
 
