@@ -19,7 +19,6 @@ const PriceAndProducts = ({ rows, setRows }) => {
                 value: parseInt(quantity, 10) * parseFloat(nosRate),
             };
             if (editIndex !== null) {
-                // Update the existing row
                 const updatedRows = [...rows];
                 updatedRows[editIndex] = newRow;
                 setRows(updatedRows);
@@ -29,7 +28,6 @@ const PriceAndProducts = ({ rows, setRows }) => {
                 setRows([...rows, newRow]);
             }
 
-            // Clear inputs after adding/updating the row
             setDescription('');
             setHsnNo('');
             setQuantity('');
