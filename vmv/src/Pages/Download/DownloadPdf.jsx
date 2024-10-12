@@ -6,7 +6,7 @@ const DownloadPdf = ({ rows, formData }) => {
 
     const generatePDF = () => {
         const options = {
-            margin: 10,
+            margin: 0,
             filename: "VMV_International_Invoice.pdf",
             image: { type: "jpeg", quality: 1 },
             html2canvas: { scale: 8, logging: true, dpi: 800 },
@@ -33,15 +33,11 @@ const DownloadPdf = ({ rows, formData }) => {
             {/* Hidden PDF Content */}
             <div className="hidden">
                 <div ref={pdfRef} className="min-h-screen bg-white flex items-center justify-center p-10">
-                    <div className="bg-white p-8 rounded-lg shadow-lg max-w-3xl w-full">
-                        <div className="flex justify-evenly items-center mb-6">
-                            <div className="text-gray-600">
-                                <div className="flex items-center space-x-11">
-                                    <a href="#" className="text-sm">www.yourcompany.com</a>
-                                    <span className="text-sm">+998 224 662 24</span>
-                                    <a href="mailto:mail@company.com" className="text-sm">mail@company.com</a>
-                                </div>
-                            </div>
+                    <div className="bg-white rounded-lg shadow-lg max-w-3xl w-full">
+                        <div className="flex items-start mb-6 text-gray-600 justify-around">
+                            <a href="#" className="text-sm">GST No: {formData.gstNumber}</a>
+                            <a href="#" className="text-sm">Email: {formData.yourEmail}</a>
+                            <a href="#" className="text-sm">Mobile: {formData.yourNumber}</a>
                         </div>
 
                         <div className="grid grid-cols-2 lg:grid-cols-2 gap-6">
@@ -79,9 +75,9 @@ const DownloadPdf = ({ rows, formData }) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="bg-white p-5 max-w-6xl w-full">
+                        <div className="bg-white mt-5 max-w-6xl w-full">
                             {/* Table Header */}
-                            <div className="mb-4">
+                            <div className="mb-5">
                                 <div className="grid grid-cols-5 gap-4 text-gray-700 font-semibold text-lg">
                                     <div className="text-center">Description</div>
                                     <div className="text-center">HSN No</div>
@@ -104,8 +100,66 @@ const DownloadPdf = ({ rows, formData }) => {
                                     </div>
                                 ))}
                             </div>
+                            <div className="max-w-4xl mx-0 my-10">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                    {/* Left: Payment Details */}
+                                    <div className="bg-gray-100 p-6 rounded-lg relative">
+                                        {/* QR Code */}
+                                        <div className="absolute top-5 right-2">
+                                            <img
+                                                src="https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg"
+                                                alt="QR Code"
+                                                className="w-20 h-20"
+                                            />
+                                        </div>
+                                        <div className="text-gray-700 space-y-4">
+                                            <p className="font-semibold text-lg">Payment Details:</p>
+                                            <p>Mobile: +1-124-521-6215</p>
+                                            <p>GPay UPI ID: mail@yourcompany.com</p>
+                                            <p>PayPal: mail@yourcompany.com</p>
+                                        </div>
+                                        <div className="mt-6 text-gray-500 text-sm leading-relaxed text-justify">
+                                            <p>
+                                                Trust our secure payment methods for fast transactions. We use encryption for safety, with 24/7 support available, Our customer support is available 24/7 to assist you...
+                                            </p>
+                                        </div>
+                                    </div>
 
+                                    {/* Right: Total and Name */}
+                                    <div className="relative bg-white p-0">
+                                        <div className="bg-purple-600 text-white py-6 px-8 rounded-t-xl">
+                                            <div className="space-y-4">
+                                                <div className="flex justify-between text-lg">
+                                                    <span className="font-semibold">Sub Total</span>
+                                                    <span>$800.00</span>
+                                                </div>
+                                                <div className="flex justify-between text-lg">
+                                                    <span className="font-semibold">Tax (5%)</span>
+                                                    <span>$20.00</span>
+                                                </div>
+                                                <div className="flex justify-between text-lg">
+                                                    <span className="font-semibold">Discount (7%)</span>
+                                                    <span>-$20.00</span>
+                                                </div>
+                                                <div className="border-t-2 border-yellow-400 mt-4"></div>
+                                                <div className="flex justify-between text-xl font-bold mt-4">
+                                                    <span>TOTAL</span>
+                                                    <span>$800.00</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {/* Yellow Divider */}
+                                        <div className="h-2 bg-yellow-400"></div>
+                                        {/* Name Section */}
+                                        <div className="px-8 py-6">
+                                            <p className="font-bold text-gray-800 text-lg">Nico Ernando Hidayat</p>
+                                            <p className="text-gray-500 text-sm">General Manager</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
