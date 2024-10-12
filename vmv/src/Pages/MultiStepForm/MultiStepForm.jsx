@@ -18,7 +18,7 @@ const MultiStepForm = () => {
         buyerCompany: "",
         buyerAddress: "",
         kindAttention: "",
-        yourAddress: "PLOT NO: 115, LAKSHMI NAGAR KOLADI, THIRUVERKADU, CHENNAI: 600077",
+        yourAddress: "Plot no: 115, Lakshmi Nagar, Koladi, Thiruverkadu, Chennai: 600077",
         yourEmail: "",
         yourNumber: "",
         gstNumber: "",
