@@ -78,7 +78,7 @@ const DownloadPdf = ({ rows, formData }) => {
                         <div className="bg-white mt-5 max-w-6xl w-full">
                             {/* Table Header */}
                             <div className="mb-5">
-                                <div className="grid grid-cols-5 gap-4 text-gray-700 font-semibold text-lg">
+                                <div className="grid grid-cols-5 text-gray-700 font-semibold text-lg">
                                     <div className="text-center">Description</div>
                                     <div className="text-center">HSN No</div>
                                     <div className="text-center">Qty</div>
@@ -90,7 +90,7 @@ const DownloadPdf = ({ rows, formData }) => {
                                 {rows.map((row, index) => (
                                     <div
                                         key={index}
-                                        className="grid grid-cols-5 gap-4 items-center bg-gray-100 p-3 rounded-lg"
+                                        className="grid grid-cols-5 items-center bg-gray-100 p-3 rounded-lg gap-6"
                                     >
                                         <div className="text-center mb-3">{row.description}</div>
                                         <div className="text-center mb-3">{row.hsnNo}</div>
@@ -114,7 +114,7 @@ const DownloadPdf = ({ rows, formData }) => {
                                         </div>
                                         <div className="text-gray-700 space-y-4">
                                             <p className="font-semibold text-lg">Payment Details:</p>
-                                            <p>Mobile: +1-124-521-6215</p>
+                                            <p>Mobile: {formData.yourNumber}</p>
                                             <p>GPay UPI ID: mail@yourcompany.com</p>
                                             <p>PayPal: mail@yourcompany.com</p>
                                         </div>
@@ -126,7 +126,7 @@ const DownloadPdf = ({ rows, formData }) => {
                                     </div>
 
                                     {/* Right: Total and Name */}
-                                    <div className="relative bg-white p-0">
+                                    <div className="relative bg-white">
                                         <div className="bg-purple-600 text-white py-6 px-8 rounded-t-xl">
                                             <div className="space-y-4">
                                                 <div className="flex justify-between text-lg">
