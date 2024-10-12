@@ -120,7 +120,7 @@ const DownloadPdf = ({ rows, formData }) => {
                                         </div>
                                         <div className="mt-6 text-gray-500 text-sm leading-relaxed text-justify">
                                             <p>
-                                                Trust our secure payment methods for fast transactions. We use encryption for safety, with 24/7 support available, Our customer support is available 24/7 to assist you...
+                                                Trust our secure payment methods for transactions with 24/7 support available, Our customer support is available 24/7 to assist you...
                                             </p>
                                         </div>
                                     </div>
