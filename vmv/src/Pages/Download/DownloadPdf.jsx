@@ -101,7 +101,7 @@ const DownloadPdf = ({ rows, formData }) => {
                                 ))}
                             </div>
                             <div className="max-w-4xl mx-0 my-10">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div className="grid grid-cols-2 md:grid-cols-2 gap-8">
                                     {/* Left: Payment Details */}
                                     <div className="bg-gray-100 p-6 rounded-lg relative">
                                         {/* QR Code */}
@@ -152,7 +152,7 @@ const DownloadPdf = ({ rows, formData }) => {
                                         <div className="h-2 bg-yellow-400"></div>
                                         {/* Name Section */}
                                         <div className="px-8 py-6">
-                                            <p className="font-bold text-gray-800 text-lg">Nico Ernando Hidayat</p>
+                                            <p className="font-bold text-gray-800 text-lg">Your Manager Name</p>
                                             <p className="text-gray-500 text-sm">General Manager</p>
                                         </div>
                                     </div>
