@@ -1,32 +1,36 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 const CardComponent = () => {
   return (
-    <a
-      href="/form"
-      className="flex flex-col items-center bg-black border border-gray-200 rounded-lg shadow dark:border-gray-700 max-w-sm"
-    >
-      <div className="flex flex-col justify-between p-4 leading-normal">
-        <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">
-          Create Tax Invoices for VMV
-        </h5>
-        <p className="font-normal text-gray-300">
-          Generate accurate and compliant tax invoices tailored for VMV's business needs.
-        </p>
+<div className="flex flex-col bg-black rounded-3xl w-72 sm:w-80 md:w-96">
+      <div className="px-6 py-8 sm:p-10 sm:pb-6">
+        <div className="grid items-center justify-center w-full grid-cols-1 text-left">
+          <div>
+            <h2 className="text-lg font-medium tracking-tighter text-white lg:text-3xl">
+              Create Invoice
+            </h2>
+            <p className="mt-2 text-sm text-gray-100">Grow steadily and pizza.</p>
+          </div>
+          <div className="mt-6">
+            <p>
+              <span className="text-5xl font-light tracking-tight text-white">
+                $35
+              </span>
+              <span className="text-base font-medium text-white"> /mo </span>
+            </p>
+          </div>
+        </div>
       </div>
-      {/* Button wrapper */}
-      <div className="flex justify-center w-full p-4">
-        <button
-          type="button"
-          className="flex items-center rounded-lg bg-white px-6 py-3 text-black font-semibold transition duration-300 ease-in-out shadow-lg"
+      <div className="flex px-6 pb-8 sm:px-8">
+        <a
+          aria-describedby="tier-starter"
+          className="items-center justify-center w-full px-6 py-2.5 text-center text-black bg-white border-2 border-white rounded-full inline-flex duration-200 hover:bg-transparent hover:border-white hover:text-white focus:outline-none focus-visible:outline-white text-sm focus-visible:ring-white"
+          href="/form"
         >
-          Create Invoices
-          <FontAwesomeIcon icon={faArrowRight} className="ml-2 h-4 w-4" />
-        </button>
+          Get Started
+        </a>
       </div>
-    </a>
+    </div>
   );
 };
 
