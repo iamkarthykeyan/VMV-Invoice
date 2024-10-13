@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { FaCheckCircle, FaCircle } from "react-icons/fa";
 import DownloadPdf from "../Download/DownloadPdf";
 import PriceAndProducts from "../PriceandProducts/PriceandProducts";
+import DownloadExcel from "../Download/DownloadExcel";
+import DownloadCsv from "../Download/DownloadCsv";
 
 const MultiStepForm = () => {
     const [step, setStep] = useState(1);
@@ -172,6 +174,8 @@ const MultiStepForm = () => {
                     <div>
                         <h3 className="text-xl font-semibold mb-6 text-gray-800">Download as PDF</h3>
                         <DownloadPdf rows={rows} formData={formData} /> {/* Pass props to DownloadPdf */}
+                        <DownloadExcel rows={rows} formData={formData} /> {/* Pass props to DownloadExcel */}
+                        <DownloadCsv  rows={rows} formData={formData} /> {/* Pass props to DownloadCsv */}
                     </div>
                 )
             default:

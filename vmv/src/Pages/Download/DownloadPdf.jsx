@@ -7,7 +7,7 @@ const DownloadPdf = ({ rows, formData }) => {
     const generatePDF = () => {
         const options = {
             margin: 0,
-            filename: "VMV_International_Invoice.pdf",
+            filename: `VMV_International_${formData.invoiceNumber}`,
             image: { type: "jpeg", quality: 1 },
             html2canvas: { scale: 8, logging: true, dpi: 800 },
             jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
