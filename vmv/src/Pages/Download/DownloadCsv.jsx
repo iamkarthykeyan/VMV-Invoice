@@ -1,7 +1,7 @@
+// DownloadCsv Component
 import { CSVLink } from 'react-csv';
 
 const DownloadCsv = ({ rows, formData }) => {
-  // Prepare the CSV data
   const formattedRows = rows.map((row, index) => ({
     "S.No": index + 1,
     Description: row.description,
@@ -11,22 +11,25 @@ const DownloadCsv = ({ rows, formData }) => {
     Value: row.value,
   }));
 
-  // Add header information to the CSV
   const headerData = [
     [`Date: ${formData.date}`],
+    [`GST No: ${formData.gstNumber}`],
     [`Invoice Number: ${formData.invoiceNumber}`],
     [`Buyer Company: ${formData.buyerCompany}`],
     [`Buyer Address: ${formData.buyerAddress}`],
-    [], // Empty row for spacing
-    ["S.No", "Description", "HSN No", "Quantity", "Rate (Nos)", "Value"], // Table headers
+    [],
+    ["S.No", "Description", "HSN No", "Quantity", "Rate (Nos)", "Value"],
   ];
 
-  // Combine header and row data
   const csvData = [...headerData, ...formattedRows.map(Object.values)];
 
   return (
     <CSVLink data={csvData} filename={`Invoice_${formData.invoiceNumber}.csv`}>
-      Download CSV
+      <button
+        className="w-full bg-gray-800 text-white px-4 py-3 rounded-lg hover:bg-gray-700 transition-all mt-5"
+      >
+        Download CSV
+      </button>
     </CSVLink>
   );
 };

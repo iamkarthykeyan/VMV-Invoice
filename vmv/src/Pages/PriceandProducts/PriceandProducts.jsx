@@ -74,7 +74,7 @@ const PriceAndProducts = ({ rows, setRows }) => {
     return (
         <div className="p-4">
             <h3 className="text-2xl font-semibold mb-6 text-gray-800">Price and Products</h3>
-            <div className="mb-4">
+            <div >
                 <label htmlFor="description" className="block text-gray-700 mb-1">Description</label>
                 <input
                     type="text"
@@ -84,7 +84,7 @@ const PriceAndProducts = ({ rows, setRows }) => {
                     className="w-full p-3 border-2 border-gray-300 rounded-lg mb-4 focus:ring-2 focus:ring-gray-500 focus:outline-none"
                 />
             </div>
-            <div className="mb-4">
+            <div >
                 <label htmlFor="hsnno" className="block text-gray-700 mb-1">HSN No</label>
                 <input
                     type="text"
@@ -94,7 +94,7 @@ const PriceAndProducts = ({ rows, setRows }) => {
                     className="w-full p-3 border-2 border-gray-300 rounded-lg mb-4 focus:ring-2 focus:ring-gray-500 focus:outline-none"
                 />
             </div>
-            <div className="mb-4">
+            <div >
                 <label htmlFor="quantity" className="block text-gray-700 mb-1">Quantity</label>
                 <input
                     type="number"
@@ -104,7 +104,7 @@ const PriceAndProducts = ({ rows, setRows }) => {
                     className="w-full p-3 border-2 border-gray-300 rounded-lg mb-4 focus:ring-2 focus:ring-gray-500 focus:outline-none"
                 />
             </div>
-            <div className="mb-4">
+            <div >
                 <label htmlFor="nosrate" className="block text-gray-700 mb-1">No's Rate</label>
                 <input
                     type="number"
@@ -116,13 +116,13 @@ const PriceAndProducts = ({ rows, setRows }) => {
             </div>
             <button
                 onClick={handleAddRow}
-                className="bg-gradient-to-r from-green-500 to-lime-600 text-white py-2 px-4 rounded-lg hover:from-green-600 hover:to-lime-700 transition-all duration-300 focus:outline-none font-semibold w-full flex items-center justify-center transform"
+                className="mt-4 bg-gradient-to-r from-green-500 to-lime-600 text-white py-2 px-4 rounded-lg hover:from-green-600 hover:to-lime-700 transition-all duration-300 focus:outline-none font-semibold w-full flex items-center justify-center transform"
             >
                 {editIndex !== null ? 'Update Product' : 'Add Product to the Table'} <p className="ml-2 text-2xl">→</p>
             </button>
 
             {/* Table to display added rows */}
-            <div className="mt-6 overflow-x-auto shadow-md rounded-md">
+            <div className="mt-6 overflow-x-auto">
                 <table className="min-w-full bg-white border-collapse">
                     <thead className="bg-black text-white rounded-t-lg">
                         <tr className="text-left">
@@ -138,13 +138,13 @@ const PriceAndProducts = ({ rows, setRows }) => {
                     <tbody>
                         {rows.map((row, index) => (
                             <tr key={index} className="bg-white">
-                                <td className="border p-3 text-black text-center">{row.sno}</td>
-                                <td className="border p-3 text-black text-center">{row.description}</td>
-                                <td className="border p-3 text-black text-center">{row.hsnNo}</td>
-                                <td className="border p-3 text-black text-center">{row.quantity}</td>
-                                <td className="border p-3 text-black text-center">{row.nosRate}</td>
-                                <td className="border p-3 text-black text-center">{row.value}</td>
-                                <td className="border p-3 text-black text-center">
+                                <td className="border-2 p-3 text-black text-center">{row.sno}</td>
+                                <td className="border-2 p-3 text-black text-center">{row.description}</td>
+                                <td className="border-2 p-3 text-black text-center">{row.hsnNo}</td>
+                                <td className="border-2 p-3 text-black text-center">{row.quantity}</td>
+                                <td className="border-2 p-3 text-black text-center">{row.nosRate}</td>
+                                <td className="border-2 p-3 text-black text-center">{row.value}</td>
+                                <td className="border-2 p-3 text-black text-center">
                                     <button
                                         onClick={() => handleEdit(index)}
                                         className="text-black py-2 px-4 rounded-full"
@@ -153,7 +153,7 @@ const PriceAndProducts = ({ rows, setRows }) => {
                                     </button>
                                     <button
                                         onClick={() => handleDelete(index)}
-                                        className="text-red-600 py-2 px-4 rounded-full"
+                                        className="text-red-500 py-2 px-4 rounded-full"
                                     >
                                         <i className="fas fa-trash text-xl"></i>
                                     </button>
@@ -167,7 +167,7 @@ const PriceAndProducts = ({ rows, setRows }) => {
             {/* Clear Data Button */}
             <button
                 onClick={handleClearData}
-                className="mt-4 bg-gradient-to-r from-red-500 to-red-600 text-white py-2 px-4 rounded-lg hover:from-red-600 hover:to-red-700 transition-all duration-300 focus:outline-none font-semibold w-full flex items-center justify-center"
+                className="mt-6 bg-gradient-to-r from-red-500 to-red-600 text-white py-2 px-4 rounded-lg hover:from-red-600 hover:to-red-700 transition-all duration-300 focus:outline-none font-semibold w-full flex items-center justify-center"
             >
                 Clear All Data <i className="fas fa-trash text-lg ml-3"></i>
             </button>
