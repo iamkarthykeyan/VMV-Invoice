@@ -74,7 +74,7 @@ const MenuItem = ({ icon: Icon, label, active, onClick }) => {
     );
 };
 
-const Home = () => <HomeElement />; // Render HomeElement here
+const Home = () => <HomeElement />;
 const InvoiceThemes = () => <ThemesElement />;
 const Reports = () => <h2 className="text-3xl font-semibold">Reports</h2>;
 const Items = () => <h2 className="text-3xl font-semibold">Items</h2>;
