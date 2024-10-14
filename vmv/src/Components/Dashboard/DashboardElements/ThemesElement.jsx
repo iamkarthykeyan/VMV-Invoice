@@ -66,7 +66,7 @@ const themes = [
   },
 ];
 
-export default function CardList() {
+export default function ThemesElement() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
 
