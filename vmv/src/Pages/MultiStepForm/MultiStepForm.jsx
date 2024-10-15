@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { FaCheckCircle, FaCircle } from "react-icons/fa";
 import DownloadPdf from "../Download/DownloadPdf";
-import PriceAndProducts from "../PriceandProducts/PriceandProducts";
 import DownloadExcel from "../Download/DownloadExcel";
 import DownloadCsv from "../Download/DownloadCsv";
+import PriceAndProducts from "../PriceAndProducts/PriceAndProducts";
 
 const MultiStepForm = () => {
     const [step, setStep] = useState(1);
