@@ -8,7 +8,7 @@ const themes = [
     description: "Download as :",
     formats: "PDF, EXCEL & CSV",
     link: "/form",
-    imageUrl: "public/InvoiceThemes/Yellow.png", // Example image URL
+    imageUrl: "/InvoiceThemes/Yellow.png", // Example image URL
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ const themes = [
     description: "Download as :",
     formats: "PDF, EXCEL & CSV",
     link: "/form",
-    imageUrl: "public/InvoiceThemes/Red.png", // Example image URL
+    imageUrl: "/InvoiceThemes/Red.png", // Example image URL
   },
   {
     id: 3,
@@ -26,7 +26,7 @@ const themes = [
     description: "Download as :",
     formats: "PDF, EXCEL & CSV",
     link: "/form",
-    imageUrl: "public/InvoiceThemes/Blue.png", // Example image URL
+    imageUrl: "/InvoiceThemes/Blue.png", // Example image URL
   },
   {
     id: 4,
@@ -35,7 +35,7 @@ const themes = [
     description: "Download as :",
     formats: "PDF, EXCEL & CSV",
     link: "/form",
-    imageUrl: "public/InvoiceThemes/Green.png", // Example image URL
+    imageUrl: "/InvoiceThemes/Green.png", // Example image URL
   },
   {
     id: 5,
@@ -44,7 +44,7 @@ const themes = [
     description: "Download as :",
     formats: "PDF, EXCEL & CSV",
     link: "/form",
-    imageUrl: "public/InvoiceThemes/Purple.png", // Example image URL
+    imageUrl: "/InvoiceThemes/Purple.png", // Example image URL
   },
   {
     id: 6,
@@ -53,7 +53,7 @@ const themes = [
     description: "Download as :",
     formats: "PDF, EXCEL & CSV",
     link: "/form",
-    imageUrl: "public/InvoiceThemes/Pink.png", // Example image URL
+    imageUrl: "/InvoiceThemes/Pink.png", // Example image URL
   },
   {
     id: 7,
@@ -62,7 +62,7 @@ const themes = [
     description: "Download as :",
     formats: "PDF, EXCEL & CSV",
     link: "/form",
-    imageUrl: "public/InvoiceThemes/Orange.png", // Example image URL
+    imageUrl: "/InvoiceThemes/Orange.png", // Example image URL
   },
 ];
 
