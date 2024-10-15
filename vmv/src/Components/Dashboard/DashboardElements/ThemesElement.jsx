@@ -16,7 +16,7 @@ const themes = [
     color: "bg-red-500",
     description: "Download as :",
     formats: "PDF, EXCEL & CSV",
-    link: "/form",
+    link: "/redform",
     imageUrl: "/InvoiceThemes/Red.png", // Example image URL
   },
   {
@@ -25,7 +25,7 @@ const themes = [
     color: "bg-blue-500",
     description: "Download as :",
     formats: "PDF, EXCEL & CSV",
-    link: "/form",
+    link: "/blueform",
     imageUrl: "/InvoiceThemes/Blue.png", // Example image URL
   },
   {
@@ -34,7 +34,7 @@ const themes = [
     color: "bg-green-500",
     description: "Download as :",
     formats: "PDF, EXCEL & CSV",
-    link: "/form",
+    link: "/greenform",
     imageUrl: "/InvoiceThemes/Green.png", // Example image URL
   },
   {
@@ -43,7 +43,7 @@ const themes = [
     color: "bg-purple-500",
     description: "Download as :",
     formats: "PDF, EXCEL & CSV",
-    link: "/form",
+    link: "/purpleform",
     imageUrl: "/InvoiceThemes/Purple.png", // Example image URL
   },
   {
@@ -52,7 +52,7 @@ const themes = [
     color: "bg-pink-500",
     description: "Download as :",
     formats: "PDF, EXCEL & CSV",
-    link: "/form",
+    link: "/pinkform",
     imageUrl: "/InvoiceThemes/Pink.png", // Example image URL
   },
   {
@@ -61,7 +61,7 @@ const themes = [
     color: "bg-orange-500",
     description: "Download as :",
     formats: "PDF, EXCEL & CSV",
-    link: "/form",
+    link: "/orangeform",
     imageUrl: "/InvoiceThemes/Orange.png", // Example image URL
   },
 ];
