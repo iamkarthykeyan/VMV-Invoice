@@ -42,7 +42,7 @@ const DownloadPdf = ({ rows, formData }) => {
 
                         <div className="grid grid-cols-2 lg:grid-cols-2 gap-6">
                             {/* Left Section */}
-                            <div className="bg-purple-600 text-white p-6 rounded-xl relative flex flex-col justify-between">
+                            <div className="bg-black text-white p-6 rounded-xl relative flex flex-col justify-between">
                                 <div>
                                     <h2 className="text-5xl font-bold">VMV</h2>
                                     <h2 className="text-3xl font-bold">International</h2>
@@ -60,7 +60,7 @@ const DownloadPdf = ({ rows, formData }) => {
                             </div>
 
                             {/* Right Section */}
-                            <div className="border-2 border-purple-500 p-6 rounded-xl flex flex-col justify-between">
+                            <div className="border-2 border-black p-6 rounded-xl flex flex-col justify-between">
                                 <div>
                                     <h3 className="text-xl font-semibold text-gray-800">Invoice To :</h3>
                                     <p className="mt-2 text-gray-600">{formData.buyerCompany},</p>
@@ -127,7 +127,7 @@ const DownloadPdf = ({ rows, formData }) => {
 
                                     {/* Right: Total and Name */}
                                     <div className="relative bg-white">
-                                        <div className="bg-purple-600 text-white py-6 px-8 rounded-t-xl">
+                                        <div className="bg-black text-white py-6 px-8 rounded-t-xl">
                                             <div className="space-y-4">
                                                 <div className="flex justify-between text-lg">
                                                     <span className="font-semibold">Sub Total</span>
@@ -141,7 +141,7 @@ const DownloadPdf = ({ rows, formData }) => {
                                                     <span className="font-semibold">Discount (7%)</span>
                                                     <span>-$20.00</span>
                                                 </div>
-                                                <div className="border-t-2 border-yellow-400 mt-4"></div>
+                                                <div className="border-t-2 border-gray-400 mt-4"></div>
                                                 <div className="flex justify-between text-xl font-bold mt-4">
                                                     <span>TOTAL</span>
                                                     <span>$800.00</span>
@@ -149,7 +149,7 @@ const DownloadPdf = ({ rows, formData }) => {
                                             </div>
                                         </div>
                                         {/* Yellow Divider */}
-                                        <div className="h-2 bg-yellow-400"></div>
+                                        <div className="h-2 bg-gray-400"></div>
                                         {/* Name Section */}
                                         <div className="px-8 py-6">
                                             <p className="font-bold text-gray-800 text-lg">Your Manager Name</p>
