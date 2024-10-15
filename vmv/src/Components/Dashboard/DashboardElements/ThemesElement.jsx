@@ -7,7 +7,7 @@ const themes = [
     color: "bg-yellow-500",
     description: "Download as :",
     formats: "PDF, EXCEL & CSV",
-    link: "/form",
+    link: "/yellowform",
     imageUrl: "/InvoiceThemes/Yellow.png", // Example image URL
   },
   {
