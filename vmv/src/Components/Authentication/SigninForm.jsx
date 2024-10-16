@@ -13,14 +13,12 @@ const SigninForm = ({ onLogin }) => {
   const validateForm = () => {
     let formErrors = {};
 
-    // Username validation: should be exactly "VMVAdmin"
     if (!username.trim()) {
       formErrors.username = 'Username is required';
     } else if (username !== 'VMV') {
       formErrors.username = 'Username must be VMVAdmin';
     }
 
-    // Password validation: should be exactly "VMVAdmin123"
     if (!password) {
       formErrors.password = 'Password is required';
     } else if (password !== 'VMV') {
