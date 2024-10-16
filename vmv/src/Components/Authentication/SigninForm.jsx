@@ -16,13 +16,13 @@ const SigninForm = ({ onLogin }) => {
     if (!username.trim()) {
       formErrors.username = 'Username is required';
     } else if (username !== 'VMV') {
-      formErrors.username = 'Username must be VMVAdmin';
+      formErrors.username = 'Username must be required';
     }
 
     if (!password) {
       formErrors.password = 'Password is required';
     } else if (password !== 'VMV') {
-      formErrors.password = 'Password must be VMVAdmin123';
+      formErrors.password = 'Password must be required';
     }
 
     setErrors(formErrors);
