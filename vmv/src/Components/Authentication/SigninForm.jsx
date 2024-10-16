@@ -7,8 +7,8 @@ const SigninForm = ({ onLogin }) => {
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
-  const navigate = useNavigate(); // Used to navigate after login
-  const location = useLocation(); // To get the last route before redirecting to sign in
+  const navigate = useNavigate(); 
+  const location = useLocation(); 
 
   const validateForm = () => {
     let formErrors = {};
