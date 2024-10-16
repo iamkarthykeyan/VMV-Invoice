@@ -20,12 +20,11 @@ const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    // Check if the user is already authenticated
     const storedAuth = localStorage.getItem('isAuthenticated');
     if (storedAuth === 'true') {
       setIsAuthenticated(true);
     }
-    setLoading(false); // Stop the loader after checking authentication
+    setLoading(false); 
   }, []);
 
   const handlePreloaderComplete = () => {
@@ -34,12 +33,12 @@ const App = () => {
 
   const handleLogin = () => {
     setIsAuthenticated(true);
-    localStorage.setItem('isAuthenticated', 'true'); // Store authentication state
+    localStorage.setItem('isAuthenticated', 'true'); 
   };
 
   const handleLogout = () => {
     setIsAuthenticated(false);
-    localStorage.removeItem('isAuthenticated'); // Clear authentication state
+    localStorage.removeItem('isAuthenticated'); 
   };
 
   return (
