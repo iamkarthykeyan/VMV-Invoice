@@ -1,4 +1,5 @@
 // DownloadCsv Component
+import { ArrowDownTrayIcon } from '@heroicons/react/24/solid';
 import { CSVLink } from 'react-csv';
 
 const DownloadCsv = ({ rows, formData }) => {
@@ -25,11 +26,19 @@ const DownloadCsv = ({ rows, formData }) => {
 
   return (
     <CSVLink data={csvData} filename={`Invoice_${formData.invoiceNumber}.csv`}>
-      <button
-        className="w-full bg-gray-800 text-white px-4 py-3 rounded-lg hover:bg-gray-700 transition-all mt-5"
-      >
-        Download CSV
-      </button>
+      <div className="relative flex items-center justify-center w-56 h-56 overflow-hidden">
+        <img
+          src="https://static-00.iconduck.com/assets.00/csv-icon-1791x2048-ot22nr8i.png"
+          alt="Excel background"
+          className="absolute p-5"
+        />
+        <button
+          className="relative p-3 text-white bg-black bg-opacity-60 rounded-full hover:bg-opacity-80 transition"
+          aria-label="Download CSV"
+        >
+          <ArrowDownTrayIcon className="w-6 h-6" />
+        </button>
+      </div>
     </CSVLink>
   );
 };

@@ -171,12 +171,15 @@ const MultiStepForm = () => {
                 );
             case 5:
                 return (
-                    <div>
-                        <h3 className="text-xl font-semibold mb-6 text-gray-800">Download as PDF</h3>
-                        <DownloadPdf rows={rows} formData={formData} /> {/* Pass props to DownloadPdf */}
-                        <DownloadExcel rows={rows} formData={formData} /> {/* Pass props to DownloadExcel */}
-                        <DownloadCsv  rows={rows} formData={formData} /> {/* Pass props to DownloadCsv */}
+                    <div className="flex flex-col items-center justify-center w-full px-4 py-6 sm:px-6 lg:px-8">
+                        <h3 className="text-3xl font-semibold text-gray-800 text-center mb-4">Your Invoice is Ready Now! 🎉</h3>
+                        <div className="flex flex-wrap justify-center items-center gap-4">
+                            <DownloadPdf rows={rows} formData={formData} />
+                            <DownloadExcel rows={rows} formData={formData} />
+                            <DownloadCsv rows={rows} formData={formData} />
+                        </div>
                     </div>
+
                 )
             default:
                 return null;

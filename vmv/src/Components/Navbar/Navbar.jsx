@@ -14,7 +14,7 @@ const Navbar = ({ onLogout }) => {
 
         <div className="text-2xl font-semibold md:order-none order-1 md:mb-0 mb-4 text-center">
           <a href="#" className="flex items-center gap-2 justify-center">
-            <i className="fa-solid fa-gear"></i> VMV International
+            <i className="fa-solid fa-gear"></i>VMV International
           </a>
         </div>
 

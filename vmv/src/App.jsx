@@ -13,6 +13,7 @@ import PurpleMultiStepForm from './Pages/InvoiceThemes/Purple/PurpleMultiStepFor
 import OrangeMultiStepForm from './Pages/InvoiceThemes/Orange/OrangeMultiStepForm';
 import PinkMultiStepForm from './Pages/InvoiceThemes/Pink/PinkMultiStepForm';
 import PdfDesign from './PdfDesign/PdfDesign';
+import Samples from './Samples/Samples'
 import SigninForm from './Components/Authentication/SigninForm';
 
 const App = () => {
@@ -62,6 +63,7 @@ const App = () => {
               <Route path="/yellowform" element={isAuthenticated ? <YellowMultiStepForm /> : <Navigate to="/signin" />} />
               <Route path="/purpleform" element={isAuthenticated ? <PurpleMultiStepForm /> : <Navigate to="/signin" />} />
               <Route path="/design" element={isAuthenticated ? <PdfDesign /> : <Navigate to="/signin" />} />
+              <Route path="/samples" element={isAuthenticated ? <Samples /> : <Navigate to="/signin" />} />
             </Routes>
           </>
         )}

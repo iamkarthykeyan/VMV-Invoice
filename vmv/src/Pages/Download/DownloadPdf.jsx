@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import html2pdf from 'html2pdf.js';
+import { ArrowDownTrayIcon } from '@heroicons/react/24/solid';
 
 const DownloadPdf = ({ rows, formData }) => {
     const pdfRef = useRef();
@@ -23,12 +24,20 @@ const DownloadPdf = ({ rows, formData }) => {
     return (
         <>
             {/* Button to Download PDF */}
-            <button
-                className="w-full bg-gray-800 text-white px-4 py-3 rounded-lg hover:bg-gray-700 transition-all"
-                onClick={generatePDF}
-            >
-                Download PDF
-            </button>
+            <div className="relative flex items-center justify-center w-56 h-56 overflow-hidden">
+                <img
+                    src="https://media.istockphoto.com/id/1298834280/vector/pdf-icon-major-file-format-vector-icon-illustration.jpg?s=612x612&w=0&k=20&c=uA4lg3z8Od32TGuT6zOhMkEVJqH2kCE-_OI8ybalmac="
+                    alt="PDF background"
+                    className="absolute p-5"
+                />
+                <button
+                    onClick={generatePDF}
+                    className="relative p-3 text-white bg-black bg-opacity-60 rounded-full hover:bg-opacity-80 transition"
+                    aria-label="Download PDF"
+                >
+                    <ArrowDownTrayIcon className="w-6 h-6" />
+                </button>
+            </div>
 
             {/* Hidden PDF Content */}
             <div className="hidden">
