@@ -19,8 +19,8 @@ const Navbar = ({ onLogout }) => {
         </div>
 
         <div className="hidden md:flex items-center gap-5 md:order-none order-3">
-          <a href="#" onClick={onLogout} className="text-gray-600 hover:text-black"><i class="fa-solid fa-right-from-bracket"></i></a>
-          <a href="#" className="text-gray-600 hover:text-black"><i class="fa-solid fa-clock-rotate-left"></i></a>
+          <a href="#" onClick={onLogout} className="text-gray-600 hover:text-black"><i className="fa-solid fa-right-from-bracket"></i></a>
+          <a href="#" className="text-gray-600 hover:text-black"><i className="fa-solid fa-clock-rotate-left"></i></a>
         </div>
       </div>
 
