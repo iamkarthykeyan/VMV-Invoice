@@ -1,16 +1,42 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import html2pdf from 'html2pdf.js';
 import { ArrowDownTrayIcon } from '@heroicons/react/24/solid';
+import { gapi } from 'gapi-script';
 
 const DownloadPdf = ({ rows, formData }) => {
     const pdfRef = useRef();
+    const [showModal, setShowModal] = useState(false);
+    const [fileName, setFileName] = useState(`VMV_International_${formData.invoiceNumber}.pdf`);
 
+    const CLIENT_ID = "361117863900-vaop2b92ac5bgf9ppo8fqf6pln968m40.apps.googleusercontent.com";
+    const API_KEY = "AIzaSyDculBzBJ6lnGbLGi_l1-6URcz9An7rncM";
+    const SCOPES = "https://www.googleapis.com/auth/drive.file";
+
+    // Initialize GAPI
+    const initializeGAPI = () => {
+        gapi.load('client:auth2', () => {
+            gapi.client.init({
+                apiKey: API_KEY,
+                clientId: CLIENT_ID,
+                scope: SCOPES,
+                discoveryDocs: ["https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"],
+            }).then(() => {
+                gapi.auth2.getAuthInstance().signIn();
+            });
+        });
+    };
+
+    useEffect(() => {
+        initializeGAPI();
+    }, []);
+
+    // Generate PDF
     const generatePDF = () => {
         const options = {
             margin: 0,
             filename: `VMV_International_${formData.invoiceNumber}`,
             image: { type: "jpeg", quality: 1 },
-            html2canvas: { scale: 8, logging: true, dpi: 800 },
+            html2canvas: { scale: 10, logging: true, dpi: 1200 },
             jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
         };
 
@@ -18,7 +44,61 @@ const DownloadPdf = ({ rows, formData }) => {
         html2pdf()
             .from(pdfRef.current)
             .set(options)
-            .save();
+            .outputPdf('blob')
+            .then(pdfBlob => {
+                setShowModal(true);
+                return pdfBlob;
+            });
+    };
+
+    // Save PDF Blob to Google Drive
+    const saveToGoogleDrive = (pdfBlob) => {
+        const accessToken = gapi.auth.getToken().access_token;
+
+        const fileMetadata = {
+            name: fileName,
+            mimeType: 'application/pdf',
+        };
+
+        const formData = new FormData();
+        formData.append('metadata', new Blob([JSON.stringify(fileMetadata)], { type: 'application/json' }));
+        formData.append('file', pdfBlob);  // Attach the generated PDF blob directly
+
+        fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${accessToken}`,
+            },
+            body: formData,
+        }).then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error('Network response was not ok.');
+        }).then(data => {
+            console.log('PDF saved to Google Drive with ID:', data.id);
+            alert('PDF saved to Google Drive successfully!');
+        }).catch(error => {
+            console.error('Error saving to Google Drive:', error);
+            alert('Error saving PDF to Google Drive.');
+        });
+    };
+
+    // Handle Save to Drive button click
+    const handleSaveToDrive = () => {
+        html2pdf()
+            .from(pdfRef.current)
+            .set({
+                filename: fileName,
+                image: { type: "jpeg", quality: 1 },
+                html2canvas: { scale: 10, logging: true, dpi: 1200 },
+                jsPDF: { unit: "mm", format: "a4", orientation: "portrait" }
+            })
+            .outputPdf('blob')
+            .then(pdfBlob => {
+                saveToGoogleDrive(pdfBlob);
+                setShowModal(false); // Close modal after save
+            });
     };
 
     return (
@@ -38,6 +118,35 @@ const DownloadPdf = ({ rows, formData }) => {
                     <ArrowDownTrayIcon className="w-6 h-6" />
                 </button>
             </div>
+
+            {showModal && (
+    <div className="fixed inset-0 bg-gray-900 bg-opacity-50 backdrop-blur-sm flex justify-center items-center z-50">
+        <div className="bg-white rounded-lg p-6 w-96 shadow-lg transform transition-all duration-300 scale-100">
+            <h2 className="text-xl font-semibold mb-4 text-center">Save PDF to Google Drive</h2>
+            <input
+                type="text"
+                value={fileName}
+                onChange={(e) => setFileName(e.target.value)}
+                className="w-full border border-gray-300 p-2 rounded mb-4"
+                placeholder="Enter file name"
+            />
+            <div className="flex justify-end space-x-4">
+                <button
+                    onClick={handleSaveToDrive}
+                    className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                >
+                    Save to Drive
+                </button>
+                <button
+                    onClick={() => setShowModal(false)}
+                    className="px-4 py-2 bg-gray-300 text-gray-800 rounded hover:bg-gray-400"
+                >
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+)}
 
             {/* Hidden PDF Content */}
             <div className="hidden">

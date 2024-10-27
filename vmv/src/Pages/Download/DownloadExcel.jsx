@@ -37,19 +37,20 @@ const DownloadExcel = ({ rows, formData }) => {
 
   return (
     <div className="relative flex items-center justify-center w-64 h-64 overflow-hidden">
-      <img
+    <img
         src="https://ik.imagekit.io/rxdxtxpigt/React-Invoice/Microsoft_Excel-Logo.wine.jpg?updatedAt=1729924531066"
         alt="Excel background"
         className="absolute p-5"
-      />
-      <button
+    />
+    <button
         onClick={handleDownload}
         className="relative p-3 text-white bg-black bg-opacity-60 rounded-full hover:bg-opacity-80 transition"
         aria-label="Download Excel"
-      >
+    >
         <ArrowDownTrayIcon className="w-6 h-6" />
-      </button>
-    </div>
+    </button>
+</div>
+
   );
 };
 
