@@ -53,7 +53,14 @@ const DownloadPdf = ({ rows, formData }) => {
             .then(pdfBlob => {
                 setIsGeneratingPDF(false);
                 setShowModal(true);
-                return pdfBlob;
+                const url = URL.createObjectURL(pdfBlob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `VMV_International_${formData.invoiceNumber}.pdf`;
+                a.click();
+
+                // Release the URL after download
+                URL.revokeObjectURL(url);
             })
             .catch(() => {
                 setIsGeneratingPDF(false);
