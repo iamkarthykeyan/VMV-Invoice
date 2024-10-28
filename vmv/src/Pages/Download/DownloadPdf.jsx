@@ -14,7 +14,7 @@ const DownloadPdf = ({ rows, formData }) => {
     const [isSavingToDrive, setIsSavingToDrive] = useState(false);
 
     const CLIENT_ID = "361117863900-vaop2b92ac5bgf9ppo8fqf6pln968m40.apps.googleusercontent.com";
-    const API_KEY = import.meta.env.REACT_APP_API_KEY;
+    const API_KEY = "AIzaSyDculBzBJ6lnGbLGi_l1-6URcz9An7rncM";
     const SCOPES = "https://www.googleapis.com/auth/drive.file";
 
     // Initialize GAPI
