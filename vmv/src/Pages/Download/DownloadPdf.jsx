@@ -35,9 +35,35 @@ const DownloadPdf = ({ rows, formData }) => {
         initializeGAPI();
     }, []);
 
+    const saveBuyerInfo = async () => {
+        try {
+          const response = await fetch('http://localhost:5000/api/saveInfo', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              buyerCompanyName: formData.buyerCompany,
+              invoiceNumber: formData.invoiceNumber,
+              date: new Date().getDate().toString(),
+              month: (new Date().getMonth() + 1).toString(),
+              year: new Date().getFullYear().toString(),
+            }),
+          });
+    
+          if (!response.ok) {
+            throw new Error('Failed to save information');
+          }
+          console.log("Buyer information saved to MongoDB");
+        } catch (error) {
+          console.error('Error saving buyer information:', error);
+        }
+      };
+
     // Generate PDF
     const generatePDF = () => {
         setIsGeneratingPDF(true);
+        saveBuyerInfo();
         const options = {
             margin: 0,
             filename: `VMV_International_${formData.invoiceNumber}`,

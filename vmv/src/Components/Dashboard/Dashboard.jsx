@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { FiHome, FiDroplet, FiBarChart2, FiBox, FiClipboard, FiGlobe, FiDollarSign, FiSettings } from 'react-icons/fi';
+import { MdHistory } from "react-icons/md";
 import { RiTeamLine } from 'react-icons/ri';
 import HomeElement from './DashboardElements/HomeElement';
 import ThemesElement from './DashboardElements/ThemesElement';
+import Histories from './DashboardElements/Histories';
+
 const Dashboard = () => {
     const [activeMenu, setActiveMenu] = useState('home');
 
@@ -12,8 +15,8 @@ const Dashboard = () => {
                 return <Home />;
             case 'invoicethemes':
                 return <InvoiceThemes />;
-            case 'reports':
-                return <Reports />;
+            case 'historyinvoice':
+                return <HistoryInvoice />;
             case 'items':
                 return <Items />;
             case 'customer-directory':
@@ -42,7 +45,7 @@ const Dashboard = () => {
                     <ul className="space-y-2">
                         <MenuItem icon={FiHome} label="Home" active={activeMenu === 'home'} onClick={() => setActiveMenu('home')} />
                         <MenuItem icon={FiDroplet} label="InvoiceThemes" active={activeMenu === 'invoicethemes'} onClick={() => setActiveMenu('invoicethemes')} />
-                        <MenuItem icon={FiBarChart2} label="Reports" active={activeMenu === 'reports'} onClick={() => setActiveMenu('reports')} />
+                        <MenuItem icon={MdHistory} label="History" active={activeMenu === 'historyinvoice'} onClick={() => setActiveMenu('historyinvoice')} />
                         <MenuItem icon={FiBox} label="Items" active={activeMenu === 'items'} onClick={() => setActiveMenu('items')} />
                         <MenuItem icon={RiTeamLine} label="Team" active={activeMenu === 'team'} onClick={() => setActiveMenu('team')} />
                         <MenuItem icon={FiClipboard} label="Invoices" active={activeMenu === 'invoices'} onClick={() => setActiveMenu('invoices')} />
@@ -76,7 +79,7 @@ const MenuItem = ({ icon: Icon, label, active, onClick }) => {
 
 const Home = () => <HomeElement />;
 const InvoiceThemes = () => <ThemesElement />;
-const Reports = () => <h2 className="text-3xl font-semibold">Reports</h2>;
+const HistoryInvoice = () => <Histories />;
 const Items = () => <h2 className="text-3xl font-semibold">Items</h2>;
 const Team = () => <h2 className="text-3xl font-semibold">Team</h2>;
 const Invoices = () => <h2 className="text-3xl font-semibold">Invoices</h2>;
