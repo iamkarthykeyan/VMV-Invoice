@@ -43,7 +43,7 @@ const PreLoader = ({ onComplete }) => {
   }, [onComplete]);
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+    <div className="flex justify-center items-center min-h-screen">
       <div className="relative flex flex-col items-center">
         <div
           ref={circleRef}

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Loader from '../../../Loader/Loader'
-
+import PreLoader from '../../PreLoader/PreLoader'
 function HistoryInvoice() {
     const [histories, setHistories] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -23,7 +22,7 @@ function HistoryInvoice() {
     }, []);
 
     if (loading) {
-        return <Loader />;
+        return <PreLoader />;
     }
 
     return (

@@ -17,20 +17,6 @@ const Dashboard = () => {
                 return <InvoiceThemes />;
             case 'historyinvoice':
                 return <HistoryInvoice />;
-            case 'items':
-                return <Items />;
-            case 'customer-directory':
-                return <CustomerDirectory />;
-            case 'team':
-                return <Team />;
-            case 'invoices':
-                return <Invoices />;
-            case 'online':
-                return <Online />;
-            case 'banking':
-                return <Banking />;
-            case 'settings':
-                return <Settings />;
             default:
                 return <Home />;
         }
@@ -46,12 +32,6 @@ const Dashboard = () => {
                         <MenuItem icon={FiHome} label="Home" active={activeMenu === 'home'} onClick={() => setActiveMenu('home')} />
                         <MenuItem icon={FiDroplet} label="InvoiceThemes" active={activeMenu === 'invoicethemes'} onClick={() => setActiveMenu('invoicethemes')} />
                         <MenuItem icon={MdHistory} label="History" active={activeMenu === 'historyinvoice'} onClick={() => setActiveMenu('historyinvoice')} />
-                        <MenuItem icon={FiBox} label="Items" active={activeMenu === 'items'} onClick={() => setActiveMenu('items')} />
-                        <MenuItem icon={RiTeamLine} label="Team" active={activeMenu === 'team'} onClick={() => setActiveMenu('team')} />
-                        <MenuItem icon={FiClipboard} label="Invoices" active={activeMenu === 'invoices'} onClick={() => setActiveMenu('invoices')} />
-                        <MenuItem icon={FiGlobe} label="Online" active={activeMenu === 'online'} onClick={() => setActiveMenu('online')} />
-                        <MenuItem icon={FiDollarSign} label="Banking" active={activeMenu === 'banking'} onClick={() => setActiveMenu('banking')} />
-                        <MenuItem icon={FiSettings} label="Settings" active={activeMenu === 'settings'} onClick={() => setActiveMenu('settings')} />
                     </ul>
                 </div>
             </aside>
@@ -80,11 +60,5 @@ const MenuItem = ({ icon: Icon, label, active, onClick }) => {
 const Home = () => <HomeElement />;
 const InvoiceThemes = () => <ThemesElement />;
 const HistoryInvoice = () => <Histories />;
-const Items = () => <h2 className="text-3xl font-semibold">Items</h2>;
-const Team = () => <h2 className="text-3xl font-semibold">Team</h2>;
-const Invoices = () => <h2 className="text-3xl font-semibold">Invoices</h2>;
-const Online = () => <h2 className="text-3xl font-semibold">Online</h2>;
-const Banking = () => <h2 className="text-3xl font-semibold">Banking</h2>;
-const Settings = () => <h2 className="text-3xl font-semibold">Settings</h2>;
 
 export default Dashboard;
