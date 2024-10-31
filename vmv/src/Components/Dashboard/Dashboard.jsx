@@ -28,7 +28,7 @@ const Dashboard = () => {
             <aside className="w-64 bg-white shadow-lg p-6 flex flex-col justify-between">
                 <div>
                     <h1 className="text-2xl font-bold mb-6 text-gray-900">Tools</h1>
-                    <ul className="space-y-2">
+                    <ul className="space-y-4">
                         <MenuItem icon={FiHome} label="Home" active={activeMenu === 'home'} onClick={() => setActiveMenu('home')} />
                         <MenuItem icon={FiDroplet} label="InvoiceThemes" active={activeMenu === 'invoicethemes'} onClick={() => setActiveMenu('invoicethemes')} />
                         <MenuItem icon={MdHistory} label="History" active={activeMenu === 'historyinvoice'} onClick={() => setActiveMenu('historyinvoice')} />
