@@ -15,8 +15,6 @@ app.use(express.json());
 
 // Mounting routes
 app.use('/api/history', historyRoutes); // This line should be exactly as written
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../vmv/build', 'index.html'));
-  });
+app.use(express.static(path.join(__dirname, '../vmv', 'dist')));
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
