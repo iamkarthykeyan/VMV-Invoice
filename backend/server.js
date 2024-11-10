@@ -10,6 +10,7 @@ const historyRoutes = require('./routes/historyinfo'); // Adjust path if it diff
 const app = express();
 app.use(
     helmet.contentSecurityPolicy({
+      crossOriginOpenerPolicy: { policy: 'cross-origin' },
       directives: {
         defaultSrc: ["'self'"],
         imgSrc: ["'self'",'http://localhost:5000/favicon.ico','https://media.istockphoto.com', 'https://ik.imagekit.io', 'https://static.vecteezy.com','https://static-00.iconduck.com'], // Allow images from ik.imagekit.io and vecteezy.com
