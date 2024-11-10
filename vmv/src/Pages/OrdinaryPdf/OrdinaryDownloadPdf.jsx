@@ -277,7 +277,18 @@ const OrdinaryDownloadPdf = ({ rows, formData }) => {
                             </div>
                             <div className="max-w-4xl mx-0 my-10">
                                 <div className="grid grid-cols-2 md:grid-cols-2 gap-8">
-                                    <div></div>
+                                    <div className="bg-gray-100 p-6 rounded-lg relative">
+                                        <div className="text-gray-700 space-y-4">
+                                            <p className="font-semibold text-xl">Payment Details:</p>
+                                            <p>Mobile: +1-124-521-6215</p>
+                                            <p>GPay UPI ID: mail@yourcompany.com</p>
+                                            <p>PayPal: mail@yourcompany.com</p>
+                                        </div>
+                                        <div className="mt-3 text-gray-500 text-sm leading-relaxed text-justify">
+                                            <p>
+                                            Trust our secure, encrypted payment methods for fast transactions with 24/7 customer support available to assist you.                                            </p>
+                                        </div>
+                                    </div>                                    
                                     {/* Right: Total and Name */}
                                     <div className="relative bg-white">
                                         <div className="bg-black text-white py-6 px-8 rounded-t-xl">
