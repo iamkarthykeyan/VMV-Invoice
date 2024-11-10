@@ -25,7 +25,7 @@ const CardComponent = () => {
     <a
       aria-describedby="tier-starter"
       className="w-full px-4 py-2 text-center text-black bg-white border-2 border-white rounded-full inline-flex justify-center items-center duration-200 hover:bg-transparent hover:text-white focus:outline-none focus-visible:ring-white text-sm"
-      href="/form"
+      href="/ordinaryform"
     >
       Get Started
     </a>

@@ -1,19 +1,13 @@
 import React, { useState } from "react";
 import { FaCheckCircle, FaCircle } from "react-icons/fa";
-import DownloadPdf from "../Download/DownloadPdf";
-import DownloadExcel from "../Download/DownloadExcel";
+import OrdinaryPriceAndProducts from "./OrdinaryPriceAndProducts";
+import OrdinaryDownloadPdf from "./OrdinaryDownloadPdf";
 import DownloadCsv from "../Download/DownloadCsv";
-import PriceAndProducts from "../PriceAndProducts/PriceAndProducts";
-import { useLocation } from "react-router-dom";
+import DownloadExcel from "../Download/DownloadExcel";
 
-
-const MultiStepForm = () => {
+const OrdinaryMultiStepForm = () => {
     const [step, setStep] = useState(1);
     const [rows, setRows] = useState([]);
-
-    const location = useLocation();
-    console.log(location.state?.color); 
-    const themeColor = location.state?.color || "black";
 
     const handleUpdateRows = (newRows) => {
         setRows(newRows);
@@ -158,7 +152,7 @@ const MultiStepForm = () => {
             case 3:
                 return (
                     <div>
-                        <PriceAndProducts rows={rows} setRows={handleUpdateRows} />
+                        <OrdinaryPriceAndProducts rows={rows} setRows={handleUpdateRows} />
                     </div>
                 );
             case 4:
@@ -180,7 +174,7 @@ const MultiStepForm = () => {
                     <div className="flex flex-col items-center justify-center w-full px-4 py-6 sm:px-6 lg:px-8">
                         <h3 className="text-3xl font-semibold text-gray-800 text-center mb-4">Your Invoice is Ready Now! 🎉</h3>
                         <div className="flex flex-wrap justify-center items-center gap-4">
-                            <DownloadPdf rows={rows} formData={formData} themeColor={themeColor} />
+                            <OrdinaryDownloadPdf rows={rows} formData={formData} />
                             <DownloadExcel rows={rows} formData={formData} />
                             <DownloadCsv rows={rows} formData={formData} />
                         </div>
@@ -244,4 +238,4 @@ const MultiStepForm = () => {
     );
 };
 
-export default MultiStepForm;
+export default OrdinaryMultiStepForm;

@@ -2,11 +2,11 @@ import React, { useRef, useEffect, useState } from "react";
 import html2pdf from 'html2pdf.js';
 import { ArrowDownTrayIcon } from '@heroicons/react/24/solid';
 import { gapi } from 'gapi-script';
-import Loader from "../../Loader/Loader";
+import Loader from '../../Loader/Loader'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const DownloadPdf = ({ rows, formData, themeColor }) => {
+const OrdinaryDownloadPdf = ({ rows, formData }) => {
 
     const subtotal = rows.reduce((total, row) => total + parseFloat(row.value || 0), 0);
 
@@ -217,7 +217,7 @@ const DownloadPdf = ({ rows, formData, themeColor }) => {
 
                         <div className="grid grid-cols-2 lg:grid-cols-2 gap-6">
                             {/* Left Section */}
-                            <div className={`bg-${themeColor}-500 text-white p-6 rounded-xl relative flex flex-col justify-between`}>
+                            <div className="bg-black text-white p-6 rounded-xl relative flex flex-col justify-between">
                                 <div>
                                     <h2 className="text-5xl font-bold">VMV</h2>
                                     <h2 className="text-3xl font-bold">International</h2>
@@ -235,7 +235,7 @@ const DownloadPdf = ({ rows, formData, themeColor }) => {
                             </div>
 
                             {/* Right Section */}
-                            <div className={`border-2 border-${themeColor}-500 p-6 rounded-xl flex flex-col justify-between`}>
+                            <div className="border-2 border-black p-6 rounded-xl flex flex-col justify-between">
                                 <div>
                                     <h3 className="text-xl font-semibold text-gray-800">Invoice To :</h3>
                                     <p className="mt-2 text-gray-600">{formData.buyerCompany},</p>
@@ -280,7 +280,7 @@ const DownloadPdf = ({ rows, formData, themeColor }) => {
                                     <div></div>
                                     {/* Right: Total and Name */}
                                     <div className="relative bg-white">
-                                        <div className={`bg-${themeColor}-500 text-white py-6 px-8 rounded-t-xl`}>
+                                        <div className="bg-black text-white py-6 px-8 rounded-t-xl">
                                             <div className="space-y-4">
                                                 <div className="flex justify-between text-lg">
                                                     <span className="font-semibold">Sub Total</span>
@@ -290,15 +290,15 @@ const DownloadPdf = ({ rows, formData, themeColor }) => {
                                                     <span className="font-semibold">Tax (18%)</span>
                                                     <span>$0.18</span>
                                                 </div>
-                                                <div className={`border-t-2 border-white`}></div>
+                                                <div className="border-t-2 border-white"></div>
                                                 <div className="flex justify-between text-xl font-bold">
                                                     <span>TOTAL</span>
                                                     <span>${(subtotal * 0.18).toFixed(2)}</span>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className={`h-2 bg-${themeColor}-300`}></div>
-                                        <div className="px-8 py-3">
+                                        <div className={`h-2 bg-gray-500`}></div>
+                                        <div className="px-8 py-6">
                                             <p className="font-bold text-gray-800 text-lg">Your Manager Name</p>
                                             <p className="text-gray-500 text-sm">General Manager</p>
                                         </div>
@@ -314,4 +314,4 @@ const DownloadPdf = ({ rows, formData, themeColor }) => {
     );
 };
 
-export default DownloadPdf;
+export default OrdinaryDownloadPdf;

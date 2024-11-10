@@ -8,6 +8,8 @@ import MultiStepForm from './Pages/MultiStepForm/MultiStepForm';
 import PdfDesign from './PdfDesign/PdfDesign';
 import Samples from './Samples/Samples'
 import SigninForm from './Components/Authentication/SigninForm';
+import OrdinaryMultiStepForm from './Pages/OrdinaryPdf/OrdinaryMultiStepForm';
+
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -48,6 +50,7 @@ const App = () => {
               <Route path="/signin" element={isAuthenticated ? <Navigate to="/" /> : <SigninForm onLogin={handleLogin} />} />
               <Route path="/dashboard" element={isAuthenticated ? <Dashboard /> : <Navigate to="/signin" />} />
               <Route path="/form" element={isAuthenticated ? <MultiStepForm /> : <Navigate to="/signin" />} />
+              <Route path="/ordinaryform" element={isAuthenticated ? <OrdinaryMultiStepForm /> : <Navigate to="/signin" />} />
               <Route path="/design" element={isAuthenticated ? <PdfDesign /> : <Navigate to="/signin" />} />
               <Route path="/samples" element={isAuthenticated ? <Samples /> : <Navigate to="/signin" />} />
             </Routes>

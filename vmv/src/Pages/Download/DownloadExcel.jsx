@@ -1,7 +1,6 @@
 import * as XLSX from "xlsx";
 import { ArrowDownTrayIcon } from '@heroicons/react/24/solid';
 
-
 const DownloadExcel = ({ rows, formData }) => {
   const handleDownload = () => {
     // Prepare the data for the Excel file
