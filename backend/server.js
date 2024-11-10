@@ -12,11 +12,12 @@ app.use(
     helmet.contentSecurityPolicy({
       directives: {
         defaultSrc: ["'self'"],
-        imgSrc: ["'self'",'http://localhost:5000/favicon.ico','https://media.istockphoto.com', 'https://ik.imagekit.io', 'https://static.vecteezy.com'], // Allow images from ik.imagekit.io and vecteezy.com
+        imgSrc: ["'self'",'http://localhost:5000/favicon.ico','https://media.istockphoto.com', 'https://ik.imagekit.io', 'https://static.vecteezy.com','https://static-00.iconduck.com'], // Allow images from ik.imagekit.io and vecteezy.com
         fontSrc: ["'self'", 'https://fonts.gstatic.com'], // Allow fonts from Google Fonts
         styleSrc: ["'self'", 'https://fonts.googleapis.com', 'https://cdn.jsdelivr.net', "'unsafe-inline'"], // Allow styles from Google Fonts and inline styles
         scriptSrc: ["'self'", 'https://cdn.tailwindcss.com','https://apis.google.com','https://www.googleapis.com', "'unsafe-inline'"], // Allow Tailwind CSS CDN and inline scripts
         mediaSrc: ["'self'", 'https://ik.imagekit.io'], // Allow media files from ik.imagekit.io
+frameSrc: ["'self'",'https://content.googleapis.com/','https://accounts.google.com/'],      
       },
     })
 );
