@@ -4,10 +4,15 @@ import DownloadPdf from "../Download/DownloadPdf";
 import DownloadExcel from "../Download/DownloadExcel";
 import DownloadCsv from "../Download/DownloadCsv";
 import PriceAndProducts from "../PriceAndProducts/PriceAndProducts";
+import { useLocation } from "react-router-dom";
+
 
 const MultiStepForm = () => {
     const [step, setStep] = useState(1);
     const [rows, setRows] = useState([]);
+
+    const location = useLocation();
+    const themeColor = location.state?.color || "bg-black";
 
     const handleUpdateRows = (newRows) => {
         setRows(newRows);
@@ -174,7 +179,7 @@ const MultiStepForm = () => {
                     <div className="flex flex-col items-center justify-center w-full px-4 py-6 sm:px-6 lg:px-8">
                         <h3 className="text-3xl font-semibold text-gray-800 text-center mb-4">Your Invoice is Ready Now! 🎉</h3>
                         <div className="flex flex-wrap justify-center items-center gap-4">
-                            <DownloadPdf rows={rows} formData={formData} />
+                            <DownloadPdf rows={rows} formData={formData} themeColor={themeColor} />
                             <DownloadExcel rows={rows} formData={formData} />
                             <DownloadCsv rows={rows} formData={formData} />
                         </div>

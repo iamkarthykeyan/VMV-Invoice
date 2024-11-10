@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { FiHome, FiDroplet, FiBarChart2, FiBox, FiClipboard, FiGlobe, FiDollarSign, FiSettings } from 'react-icons/fi';
+import { FiHome, FiDroplet, FiBox } from 'react-icons/fi';
 import { MdHistory } from "react-icons/md";
-import { RiTeamLine } from 'react-icons/ri';
 import HomeElement from './DashboardElements/HomeElement';
 import ThemesElement from './DashboardElements/ThemesElement';
 import Histories from './DashboardElements/Histories';
@@ -17,6 +16,8 @@ const Dashboard = () => {
                 return <InvoiceThemes />;
             case 'historyinvoice':
                 return <HistoryInvoice />;
+            case 'items':
+                return <Items />;
             default:
                 return <Home />;
         }
@@ -28,10 +29,11 @@ const Dashboard = () => {
             <aside className="w-64 bg-white shadow-lg p-6 flex flex-col justify-between">
                 <div>
                     <h1 className="text-2xl font-bold mb-6 text-gray-900">Tools</h1>
-                    <ul className="space-y-4">
+                    <ul className="space-y-2">
                         <MenuItem icon={FiHome} label="Home" active={activeMenu === 'home'} onClick={() => setActiveMenu('home')} />
                         <MenuItem icon={FiDroplet} label="InvoiceThemes" active={activeMenu === 'invoicethemes'} onClick={() => setActiveMenu('invoicethemes')} />
                         <MenuItem icon={MdHistory} label="History" active={activeMenu === 'historyinvoice'} onClick={() => setActiveMenu('historyinvoice')} />
+                        <MenuItem icon={FiBox} label="Items" active={activeMenu === 'items'} onClick={() => setActiveMenu('items')} />
                     </ul>
                 </div>
             </aside>
@@ -60,5 +62,6 @@ const MenuItem = ({ icon: Icon, label, active, onClick }) => {
 const Home = () => <HomeElement />;
 const InvoiceThemes = () => <ThemesElement />;
 const HistoryInvoice = () => <Histories />;
+const Items = () => <h2 className="text-3xl font-semibold">Items</h2>;
 
 export default Dashboard;

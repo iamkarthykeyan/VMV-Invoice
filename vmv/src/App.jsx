@@ -5,13 +5,6 @@ import Navbar from './Components/Navbar/Navbar';
 import MainPage from './Components/MainPage/MainPage';
 import Dashboard from './Components/Dashboard/Dashboard';
 import MultiStepForm from './Pages/MultiStepForm/MultiStepForm';
-import BlueMultiStepForm from './Pages/InvoiceThemes/Blue/BlueMultiStepForm';
-import GreenMultiStepForm from './Pages/InvoiceThemes/Green/GreenMultiStepForm';
-import RedMultiStepForm from './Pages/InvoiceThemes/Red/RedMultiStepForm';
-import YellowMultiStepForm from './Pages/InvoiceThemes/Yellow/YellowMultiStepForm';
-import PurpleMultiStepForm from './Pages/InvoiceThemes/Purple/PurpleMultiStepForm';
-import OrangeMultiStepForm from './Pages/InvoiceThemes/Orange/OrangeMultiStepForm';
-import PinkMultiStepForm from './Pages/InvoiceThemes/Pink/PinkMultiStepForm';
 import PdfDesign from './PdfDesign/PdfDesign';
 import Samples from './Samples/Samples'
 import SigninForm from './Components/Authentication/SigninForm';
@@ -55,13 +48,6 @@ const App = () => {
               <Route path="/signin" element={isAuthenticated ? <Navigate to="/" /> : <SigninForm onLogin={handleLogin} />} />
               <Route path="/dashboard" element={isAuthenticated ? <Dashboard /> : <Navigate to="/signin" />} />
               <Route path="/form" element={isAuthenticated ? <MultiStepForm /> : <Navigate to="/signin" />} />
-              <Route path="/blueform" element={isAuthenticated ? <BlueMultiStepForm /> : <Navigate to="/signin" />} />
-              <Route path="/greenform" element={isAuthenticated ? <GreenMultiStepForm /> : <Navigate to="/signin" />} />
-              <Route path="/orangeform" element={isAuthenticated ? <OrangeMultiStepForm /> : <Navigate to="/signin" />} />
-              <Route path="/redform" element={isAuthenticated ? <RedMultiStepForm /> : <Navigate to="/signin" />} />
-              <Route path="/pinkform" element={isAuthenticated ? <PinkMultiStepForm /> : <Navigate to="/signin" />} />
-              <Route path="/yellowform" element={isAuthenticated ? <YellowMultiStepForm /> : <Navigate to="/signin" />} />
-              <Route path="/purpleform" element={isAuthenticated ? <PurpleMultiStepForm /> : <Navigate to="/signin" />} />
               <Route path="/design" element={isAuthenticated ? <PdfDesign /> : <Navigate to="/signin" />} />
               <Route path="/samples" element={isAuthenticated ? <Samples /> : <Navigate to="/signin" />} />
             </Routes>

@@ -6,7 +6,10 @@ import Loader from "../../Loader/Loader";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const DownloadPdf = ({ rows, formData }) => {
+const DownloadPdf = ({ rows, formData, themeColor }) => {
+
+    const subtotal = rows.reduce((total, row) => total + parseFloat(row.value || 0), 0);
+
     const pdfRef = useRef();
     const [showModal, setShowModal] = useState(false);
     const [fileName, setFileName] = useState(`VMV_International_${formData.invoiceNumber}.pdf`);
@@ -37,28 +40,28 @@ const DownloadPdf = ({ rows, formData }) => {
 
     const saveBuyerInfo = async () => {
         try {
-          const response = await fetch('http://localhost:5000/api/saveInfo', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              buyerCompanyName: formData.buyerCompany,
-              invoiceNumber: formData.invoiceNumber,
-              date: new Date().getDate().toString(),
-              month: (new Date().getMonth() + 1).toString(),
-              year: new Date().getFullYear().toString(),
-            }),
-          });
-    
-          if (!response.ok) {
-            throw new Error('Failed to save information');
-          }
-          console.log("Buyer information saved to MongoDB");
+            const response = await fetch('http://localhost:5000/api/saveInfo', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    buyerCompanyName: formData.buyerCompany,
+                    invoiceNumber: formData.invoiceNumber,
+                    date: new Date().getDate().toString(),
+                    month: (new Date().getMonth() + 1).toString(),
+                    year: new Date().getFullYear().toString(),
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to save information');
+            }
+            console.log("Buyer information saved to MongoDB");
         } catch (error) {
-          console.error('Error saving buyer information:', error);
+            console.error('Error saving buyer information:', error);
         }
-      };
+    };
 
     // Generate PDF
     const generatePDF = () => {
@@ -164,7 +167,7 @@ const DownloadPdf = ({ rows, formData }) => {
                 />
                 <button
                     onClick={generatePDF}
-                    className="relative p-3 text-white bg-black bg-opacity-60 rounded-full hover:bg-opacity-80 transition"
+                    className="relative p-3 text-white bg-gray-900 bg-opacity-60 rounded-full hover:bg-opacity-80 transition"
                     aria-label="Download PDF"
                     disabled={isGeneratingPDF}
                 >
@@ -214,7 +217,7 @@ const DownloadPdf = ({ rows, formData }) => {
 
                         <div className="grid grid-cols-2 lg:grid-cols-2 gap-6">
                             {/* Left Section */}
-                            <div className="bg-black text-white p-6 rounded-xl relative flex flex-col justify-between">
+                            <div className={`bg-${themeColor}-500 text-white p-6 rounded-xl relative flex flex-col justify-between`}>
                                 <div>
                                     <h2 className="text-5xl font-bold">VMV</h2>
                                     <h2 className="text-3xl font-bold">International</h2>
@@ -232,7 +235,7 @@ const DownloadPdf = ({ rows, formData }) => {
                             </div>
 
                             {/* Right Section */}
-                            <div className="border-2 border-black p-6 rounded-xl flex flex-col justify-between">
+                            <div className={`border-2 border-${themeColor}-500 p-6 rounded-xl flex flex-col justify-between`}>
                                 <div>
                                     <h3 className="text-xl font-semibold text-gray-800">Invoice To :</h3>
                                     <p className="mt-2 text-gray-600">{formData.buyerCompany},</p>
@@ -274,55 +277,26 @@ const DownloadPdf = ({ rows, formData }) => {
                             </div>
                             <div className="max-w-4xl mx-0 my-10">
                                 <div className="grid grid-cols-2 md:grid-cols-2 gap-8">
-                                    {/* Left: Payment Details */}
-                                    <div className="bg-gray-100 p-6 rounded-lg relative">
-                                        {/* QR Code */}
-                                        <div className="absolute top-5 right-2">
-                                            <img
-                                                src="https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg"
-                                                alt="QR Code"
-                                                className="w-20 h-20"
-                                            />
-                                        </div>
-                                        <div className="text-gray-700 space-y-4">
-                                            <p className="font-semibold text-lg">Payment Details:</p>
-                                            <p>Mobile: {formData.yourNumber}</p>
-                                            <p>GPay UPI ID: mail@yourcompany.com</p>
-                                            <p>PayPal: mail@yourcompany.com</p>
-                                        </div>
-                                        <div className="mt-6 text-gray-500 text-sm leading-relaxed text-justify">
-                                            <p>
-                                                Trust our secure payment methods for transactions with 24/7 support available, Our customer support is available 24/7 to assist you...
-                                            </p>
-                                        </div>
-                                    </div>
-
+                                    <div></div>
                                     {/* Right: Total and Name */}
                                     <div className="relative bg-white">
-                                        <div className="bg-black text-white py-6 px-8 rounded-t-xl">
+                                        <div className={`bg-${themeColor}-500 text-white py-6 px-8 rounded-t-xl`}>
                                             <div className="space-y-4">
                                                 <div className="flex justify-between text-lg">
                                                     <span className="font-semibold">Sub Total</span>
-                                                    <span>$800.00</span>
+                                                    <span>${subtotal.toFixed(2)}</span>
                                                 </div>
                                                 <div className="flex justify-between text-lg">
                                                     <span className="font-semibold">Tax (5%)</span>
                                                     <span>$20.00</span>
                                                 </div>
-                                                <div className="flex justify-between text-lg">
-                                                    <span className="font-semibold">Discount (7%)</span>
-                                                    <span>-$20.00</span>
-                                                </div>
-                                                <div className="border-t-2 border-gray-400 mt-4"></div>
-                                                <div className="flex justify-between text-xl font-bold mt-4">
+                                                <div className={`border-t-2 border-${themeColor}-400`}></div>
+                                                <div className="flex justify-between text-xl font-bold">
                                                     <span>TOTAL</span>
                                                     <span>$800.00</span>
                                                 </div>
                                             </div>
                                         </div>
-                                        {/* Yellow Divider */}
-                                        <div className="h-2 bg-gray-400"></div>
-                                        {/* Name Section */}
                                         <div className="px-8 py-6">
                                             <p className="font-bold text-gray-800 text-lg">Your Manager Name</p>
                                             <p className="text-gray-500 text-sm">General Manager</p>
@@ -331,10 +305,10 @@ const DownloadPdf = ({ rows, formData }) => {
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
+
         </>
     );
 };
