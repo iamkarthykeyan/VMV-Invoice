@@ -12,10 +12,10 @@ app.use(
     helmet.contentSecurityPolicy({
       directives: {
         defaultSrc: ["'self'"],
-        imgSrc: ["'self'",'http://localhost:5000/favicon.ico', 'https://ik.imagekit.io', 'https://static.vecteezy.com'], // Allow images from ik.imagekit.io and vecteezy.com
+        imgSrc: ["'self'",'http://localhost:5000/favicon.ico','https://media.istockphoto.com', 'https://ik.imagekit.io', 'https://static.vecteezy.com'], // Allow images from ik.imagekit.io and vecteezy.com
         fontSrc: ["'self'", 'https://fonts.gstatic.com'], // Allow fonts from Google Fonts
         styleSrc: ["'self'", 'https://fonts.googleapis.com', 'https://cdn.jsdelivr.net', "'unsafe-inline'"], // Allow styles from Google Fonts and inline styles
-        scriptSrc: ["'self'", 'https://cdn.tailwindcss.com', "'unsafe-inline'"], // Allow Tailwind CSS CDN and inline scripts
+        scriptSrc: ["'self'", 'https://cdn.tailwindcss.com','https://apis.google.com/_/scs/apps-static/_/js/k=oz.gapi.pt_BR.l4Bv_WkVC6g.O/m=auth2,client/rt=j/sv=1/d=1/ed=1/am=wQE/rs=AGLTcCOuH5S2uqmF6E8zOW7n3yiqiwhzNQ/cb=gapi.loaded_0','https://www.googleapis.com', "'unsafe-inline'"], // Allow Tailwind CSS CDN and inline scripts
         mediaSrc: ["'self'", 'https://ik.imagekit.io'], // Allow media files from ik.imagekit.io
       },
     })
