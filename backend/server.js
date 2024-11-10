@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const helmet=require("helmet")
+const helmet=require('helmet')
 dotenv.config();
 const connectDB = require('./config/db');
 const historyRoutes = require('./routes/historyinfo'); // Adjust path if it differs
@@ -22,7 +22,7 @@ app.use(
 );
 
 // Connect to MongoDB
-//connectDB();
+connectDB();
 
 // Middleware
 app.use(cors());
