@@ -1,0 +1,16 @@
+{
+  "name": "vmv-invoice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+   "start": "node backend/server.js",
+  "client": "npm start --prefix client",
+  "server": "node backend/server.js",
+  "build":"npm install && npm install --prefix vmv && npm run build --prefix vmv"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
