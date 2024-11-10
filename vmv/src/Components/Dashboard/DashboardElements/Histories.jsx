@@ -9,7 +9,7 @@ function HistoryInvoice() {
     useEffect(() => {
         const fetchHistories = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/history/saveInfo');
+                const response = await axios.get('/api/history/saveInfo');
                 setHistories(Array.isArray(response.data) ? response.data : []);
             } catch (error) {
                 console.error('Error fetching histories:', error);
