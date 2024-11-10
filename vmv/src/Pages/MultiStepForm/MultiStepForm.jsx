@@ -3,7 +3,7 @@ import { FaCheckCircle, FaCircle } from "react-icons/fa";
 import DownloadPdf from "../Download/DownloadPdf";
 import DownloadExcel from "../Download/DownloadExcel";
 import DownloadCsv from "../Download/DownloadCsv";
-import PriceAndProducts from "../PriceAndProducts/PriceAndProducts";
+import PriceAndProducts from "../PriceandProducts/PriceandProducts";
 import { useLocation } from "react-router-dom";
 
 
